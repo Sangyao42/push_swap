@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/18 19:12:00 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/18 23:18:13 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stddef.h>
+# include <limits.h>
 // typedef struct s_state
 // {
 // 	t_stack	*a; //?

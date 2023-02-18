@@ -6,38 +6,98 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/18 22:42:24 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/18 23:31:14 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	input_is_valid(int argc, char **input)
+static int	ps_isdigit(char c)
 {
-	if (argc < 2)
+	if (c > '9' || c < '0')
 		return (1);
-	if (all_is_int(argc, **argv))
-		return (1);
-	if (all_is_in_range(argc, **argv))
-		return (1);
-	if (is_duplicate(argc, **argv))
-		return (1);
-	return (0);
+	else
+		return (0);
 }
 
-int	all_is_int(int argc, char **input)
+static int	ps_strcmp(char *s1, char *s2)
 {
 	int	i;
+	int	ret_val;
 
 	i = 0;
-	while (i < (argc - 1))
+	ret_val = 0;
+	while (s1[i] || s2[i])
 	{
-		if (is_int((*input + 1) + i))
+		ret_val = s1[i] - s2[i];
+		if (ret_val != 0)
+			return (ret_val);
+		else
+			ret_val = 0;
+		i++;
+	}
+	return (ret_val);
+}
+
+static int	ps_atoi(const char *str)
+{
+	int			sign;
+	long long	value;
+
+	sign = 1;
+	while (is_non_space(*str) == 1)
+		str = str + 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str = str + 1;
+	}
+	value = 0;
+	while (*str != '\0' && ('0' <= *str && *str <= '9'))
+	{
+		value = 10 * value;
+		value = value + (*str - '0');
+		if ((value * sign) > INT_MAX || (value * sign) < INT_MIN)
+			return (1);
+		str++;
+	}
+	return ((int) value * sign);
+}
+
+int	input_is_valid(int arg_num, char **input)
+{
+	int		i;
+	char	**input_cpy;
+
+	input_cpy = input;
+	i = 0;
+	while (i < arg_num)
+	{
+		if (is_int(*input + i))
+			return (1);
+		if (is_duplicate((*input + 1 + i), input_cpy, arg_num))
+			return (1);
+		if (is_in_range(*input + i))
 			return (1);
 		i++;
 	}
 	return (0);
 }
+
+// int	all_is_int(int argc, char **input)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < (argc - 1))
+// 	{
+// 		if (is_int((*input + 1) + i))
+// 			return (1);
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int	is_int(char *str)
 {
@@ -48,25 +108,27 @@ int	is_int(char *str)
 		return (1);
 	while (*str + i)
 	{
-		if (!is_digit(*str + i))
+		if (ps_isdigit(*str + i))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	is_duplicate(char *str, char **input)
+int	is_duplicate(char *str, char **input, int arg_num)
 {
 	int	i;
 
 	i = 0;
-	if (!ft)
+	while (i < arg_num)
 	{
-		/* code */
+		if (ps_strcmp(str, *input + i))
+			return (1);
+		i++;
 	}
-
-
+	return (0);
 }
+
 int	is_in_range(char *str)
 {
 	int	i;
@@ -74,11 +136,10 @@ int	is_in_range(char *str)
 	i = 0;
 	while (*str + i)
 	{
-		if (!is_digit(*str + i))
+		if (ps_atoi(*str + i))
 			return (1);
 		i++;
 	}
 	return (0);
-}
 }
 
