@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:47:02 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/03 16:20:12 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/21 21:50:54 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	str_counter(char const *s, char c)
 	return (counter);
 }
 
-static char	**stringsfree(char **strings)
+char	**stringsfree(char **strings)
 {
 	char	**current;
 

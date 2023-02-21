@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 11:00:54 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/02 17:56:45 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/21 22:46:18 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	is_non_space(const char c)
  * if long value overflows LONG_MAX, the original atoi() returns -1.
  * @return	The integer from str.
 */
-int	ft_atoi(const char *str)
+int	ft_atoi(const cha)
 {
 	int			sign;
 	long long	value;

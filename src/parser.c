@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/18 23:31:14 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/21 23:00:13 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,3 +143,44 @@ int	is_in_range(char *str)
 	return (0);
 }
 
+int	**check_input(int argc, char **argv)
+{
+	char	**input;
+	int		counter;
+	int		i;
+
+	counter = 0;
+	i = 0;
+	if (argc < 2)
+		ft_putstr_fd(2, "Error\n");
+	else if (argc == 2)
+	{
+		input = ft_split(*(argv + 1), ' ');
+		if (!input)
+			return (NULL);
+		if (!*input)
+			return (stringsfree(input), NULL);
+		while (input + counter)
+			counter++;
+		if (input_is_valid(counter, input))
+			return (stringsfree(input), NULL);
+		// input = cut the last \0;
+	}
+	else
+	{
+		input = argv + 1;
+		counter = argc - 1;
+		if (input_is_valid(counter, input))
+			return (NULL);
+	}
+	return (input);
+}
+
+
+	// input_array = (int *)malloc(sizeof(int *) * counter);
+	// while (i < counter)
+	// {
+	// 	input_array[i] = ft_atoi(input[i]);
+	// 	i++;
+	// }
+	// return (input_array);
