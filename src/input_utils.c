@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ps_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 11:00:54 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/22 17:31:44 by sawang           ###   ########.fr       */
+/*   Created: 2023/02/22 17:33:29 by sawang            #+#    #+#             */
+/*   Updated: 2023/02/22 17:34:26 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	is_non_space(const char c)
+int	ps_is_non_digit(char c)
 {
-	int		i;
-	char	*space;
-
-	i = 0;
-	space = " \f\n\r\t\v";
-	while (space[i] != '\0')
-	{
-		if (c == space[i])
-			return (1);
-		i++;
-	}
-	return (0);
+	if (c > '9' || c < '0')
+		return (1);
+	else
+		return (0);
 }
 
-/**
- * @brief	The atoi() function converts the initial portion of the string
- * pointed to by str to int representation.
- * @details	set long value to avoid int overflow.
- * set long long value to avoid long overflow.
- * if long value overflows LONG_MIN, the original atoi() returns 0;
- * if long value overflows LONG_MAX, the original atoi() returns -1.
- * @return	The integer from str.
-*/
-int	ft_atoi(const char *str)
+int	ps_strcmp(char *s1, char *s2)
+{
+	int	i;
+	int	ret_val;
+
+	i = 0;
+	ret_val = 0;
+	while (s1[i] || s2[i])
+	{
+		ret_val = s1[i] - s2[i];
+		if (ret_val != 0)
+			return (ret_val);
+		else
+			ret_val = 0;
+		i++;
+	}
+	return (ret_val);
+}
+
+int	ps_atoi(const char *str)
 {
 	int			sign;
 	long long	value;
@@ -56,10 +58,8 @@ int	ft_atoi(const char *str)
 	{
 		value = 10 * value;
 		value = value + (*str - '0');
-		if (value < 0 && sign == -1)
-			return (0);
-		else if (value < 0 && sign == 1)
-			return (-1);
+		if ((value * sign) > INT_MAX || (value * sign) < INT_MIN)
+			return (1);
 		str++;
 	}
 	return ((int) value * sign);

@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/18 23:18:13 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/22 17:43:26 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,8 @@
 
 # include <stddef.h>
 # include <limits.h>
-// typedef struct s_state
-// {
-// 	t_stack	*a; //?
-// 	t_stack	*b; //?
-// 	// int	size_a;
-// 	// int	size_b;
-// }				t_state;
+# include <stdlib.h>
 
-// typedef struct s_push_swap
-// {
-// 	t_state	*state;
-// 	...;
-// }				t_ps;
-
-// typedef struct  s_node
-// {
-// 	int		nbr;
-// 	t_node *next;
-// }				t_node;
-
-// typedef struct s_stack
-// {
-// 	t_node *head;
-// 	int		size;
-// }				t_stack;
 typedef struct s_node
 {
 	int				nbr;
