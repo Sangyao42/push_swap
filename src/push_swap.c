@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/22 17:35:02 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/22 22:28:03 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	int	*input_arr;
+	int	*elements;
 
 	// if (argc < 2)
 	// 	ft_putstr_fd(2, "Error\n");
@@ -24,6 +24,8 @@ int	main(int argc, char **argv)
 	// 	input = argv;
 	// if (input_is_valid(argc - 1, input))
 	// 	return (1);
-	input_arr = get_input(argc, argv);
+	elements = get_input(argc, argv);
+	if (!elements)
+		exit(EXIT_FAILURE);
 	return (0);
 }
