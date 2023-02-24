@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:33:11 by sawang            #+#    #+#             */
-/*   Updated: 2022/11/23 21:29:43 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:43:24 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*read_and_accumulate(int fd, char *offset_str)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	while (ft_strchr(offset_str, '\n') == 0)
+	while (gnl_strchr(offset_str, '\n') == 0)
 	{
 		red = read(fd, buffer, BUFFER_SIZE);
 		if (red == -1)
@@ -31,7 +31,7 @@ static char	*read_and_accumulate(int fd, char *offset_str)
 		if (red == 0)
 			break ;
 		buffer[red] = '\0';
-		offset_str = ft_strjoin(offset_str, buffer);
+		offset_str = gnl_strjoin(offset_str, buffer);
 		if (!offset_str)
 			return (free (buffer), NULL);
 	}
@@ -46,7 +46,7 @@ static char	*get_first_line(char *offset_str)
 
 	if (!offset_str)
 		return (NULL);
-	len = ft_strchr(offset_str, '\n');
+	len = gnl_strchr(offset_str, '\n');
 	if (len)
 		line = ft_substr(offset_str, 0, len);
 	else
@@ -61,7 +61,7 @@ static char	*get_offset_str(char *offset_str)
 
 	if (!offset_str)
 		return (NULL);
-	len = ft_strchr(offset_str, '\n');
+	len = gnl_strchr(offset_str, '\n');
 	if (len)
 	{
 		ptr = offset_str;

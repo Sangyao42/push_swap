@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/13 16:23:39 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:45:23 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
  * buffer will not be changed, then break the loop.
  * and keep offset_str as how it was before.
  * Set buffer[red] = '\0' to set the buffer red as a string
- * for using ft_strjoin().
+ * for using gnl_strjoin().
  * Once buffer is joined to offset_str, buffer should be freed
  * and the offset_str should be freed as well,
- * which is accomplished in ft_strjoin() using free(s1).
+ * which is accomplished in gnl_strjoin() using free(s1).
 */
 static char	*read_and_accumulate(int fd, char *offset_str)
 {
@@ -35,7 +35,7 @@ static char	*read_and_accumulate(int fd, char *offset_str)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	while (ft_strchr(offset_str, '\n') == 0)
+	while (gnl_strchr(offset_str, '\n') == 0)
 	{
 		red = read(fd, buffer, BUFFER_SIZE);
 		if (red == -1)
@@ -47,7 +47,7 @@ static char	*read_and_accumulate(int fd, char *offset_str)
 		if (red == 0)
 			break ;
 		buffer[red] = '\0';
-		offset_str = ft_strjoin(offset_str, buffer);
+		offset_str = gnl_strjoin(offset_str, buffer);
 	}
 	free (buffer);
 	return (offset_str);
@@ -65,7 +65,7 @@ static char	*get_first_line(char *offset_str)
 
 	if (!offset_str)
 		return (NULL);
-	len = ft_strchr(offset_str, '\n');
+	len = gnl_strchr(offset_str, '\n');
 	if (len)
 	{
 		line = ft_substr(offset_str, 0, len);
@@ -92,7 +92,7 @@ static char	*get_offset_str(char *offset_str)
 
 	if (!offset_str)
 		return (NULL);
-	len = ft_strchr(offset_str, '\n');
+	len = gnl_strchr(offset_str, '\n');
 	if (len)
 	{
 		ptr = offset_str;

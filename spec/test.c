@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 13:16:24 by sawang           ###   ########.fr       */
+/*   Created: 2023/02/23 13:09:53 by sawang            #+#    #+#             */
+/*   Updated: 2023/02/24 15:34:31 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	init_stack(t_stack	*a)
+{
+	a->elements = NULL;
+	a->front = 0;
+	a->rear = 0;
+	a->max_size = 0;
+	a->size = 0;
+}
+
 int	main(int argc, char **argv)
 {
-	int	*elements;
+	unsigned int	i;
+	t_stack			a;
 
-	// if (argc < 2)
-	// 	ft_putstr_fd(2, "Error\n");
-	// else if (argc == 2)
-	// 	input = ft_split((*argv + 1));
-	// else
-	// 	input = argv;
-	// if (input_is_valid(argc - 1, input))
-	// 	return (1);
-	elements = get_input(argc, argv);
-	if (!elements)
+	init_stack(&a);
+	get_input(argc, argv, &a);
+	if (!a.elements)
 		exit(EXIT_FAILURE);
-	free(elements);
+	i = 0;
+	while (i < a.max_size)
+	{
+		printf("element %d is %d\n", i, a.elements[i]);
+		i++;
+	}
+	printf("%p, %d, %d, %d, %d\n", a.elements, a.front, a.rear, a.max_size, a.size);
+	free(a.elements);
+	a.elements = NULL;
 	return (0);
 }

@@ -6,30 +6,28 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/22 18:28:19 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/24 19:17:24 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <stdio.h>
 # include <stddef.h>
 # include <limits.h>
 # include <stdlib.h>
+# include "libft.h"
+# include "get_next_line.h"
 
-// typedef struct s_node
-// {
-// 	int				nbr;
-// 	unsigned int	idx;
-// 	t_node			*next;
-// 	t_node			*prev;
-// }				t_node;
-
-// typedef struct s_stack
-// {
-// 	unsigned int	size;
-// 	t_node			*node[2];
-// }				t_stack;
+typedef struct s_stack
+{
+	int				*elements;
+	unsigned int	front;
+	unsigned int	rear;
+	unsigned int	max_size;
+	unsigned int	size;
+}			t_stack;
 
 typedef struct s_push_swap
 {
@@ -44,17 +42,44 @@ typedef enum e_rear
 	END = 1,
 }	t_rear;
 
-// void	push(t_stack *from, t_stack *to);
-// void	swap(t_stack *st);
-// void	rotate(t_stack *st, enum e_rear rear);
+/**
+ *Function for initialize the stack
+*/
+void	init_stack(t_stack	*a);
+/**
+ * Functions for checking and getting the input from command line
+*/
+// Checker
+int		input_is_not_valid(int arg_num, char **input);
+// int		is_non_int(char *str);
+int		is_duplicate(char *str, char **input, int arg_num, int arg_idx);
+// int		is_not_in_range(char *str);
+int		is_not_valid_int(const char *str);
+// Getter
+// int		*get_input(int argc, char **argv);
+// int		*get_input_split(char **argv);
+// int		*get_input_argv(int argc, char **argv);
+void	get_input(int argc, char **argv, t_stack *a);
+void	get_input_split(char **argv, t_stack *a);
+void	get_input_argv(int argc, char **argv, t_stack *a);
+//static int		*ft_atoi_input(int counter, char **input);
+// Input utils
+int		ps_is_non_digit(char c);
+int		ps_strcmp(char *s1, char *s2);
+int		ps_atoi(const char *str);
 
-typedef struct s_stack
-{
-	int		*elements;
-	size_t	front;
-	size_t	rear;
-	size_t	max_size;
-	size_t	size;
-}			t_stack;
+/**
+ * Functions for operations
+*/
+// atom operations
+int		deque(t_stack st, t_rear rear);
+void	enque(t_stack st, t_rear rear, int num);
+// primary operations
+void	push(t_stack from, t_stack to);
+void	swap(t_stack st);
+void	rotate(t_stack st, t_rear rear);
+void	ss(t_push_swap ps);
+void	rr(t_push_swap ps);
+void	rrr(t_push_swap ps);
 
 #endif

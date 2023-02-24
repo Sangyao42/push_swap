@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2023/01/18 19:59:10 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/23 14:44:36 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t	ft_strlen(const char *str)
  * it must be set as NULL to prepare for the next call of
  * get_next_line() in ft_strdup().
 */
-char	*ft_strjoin(char *s1, char const *s2)
+char	*gnl_strjoin(char *s1, char const *s2)
 {
 	size_t	i;
 	char	*str_join;
@@ -69,7 +69,7 @@ char	*ft_strjoin(char *s1, char const *s2)
  * If no char *s, return 0.
  * If no int c found, return 0 as well.
 */
-size_t	ft_strchr(const char *s, int c)
+size_t	gnl_strchr(const char *s, int c)
 {
 	size_t	i;
 	size_t	s_len;
