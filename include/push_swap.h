@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/24 19:17:24 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 17:38:39 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_stack
 	int				*elements;
 	unsigned int	front;
 	unsigned int	rear;
-	unsigned int	max_size;
 	unsigned int	size;
+	unsigned int	max_size;
 }			t_stack;
 
 typedef struct s_push_swap
@@ -72,14 +72,19 @@ int		ps_atoi(const char *str);
  * Functions for operations
 */
 // atom operations
-int		deque(t_stack st, t_rear rear);
-void	enque(t_stack st, t_rear rear, int num);
+int		deque(t_stack *st, t_rear rear);
+void	enque(t_stack *st, t_rear rear, int num);
 // primary operations
-void	push(t_stack from, t_stack to);
-void	swap(t_stack st);
-void	rotate(t_stack st, t_rear rear);
-void	ss(t_push_swap ps);
-void	rr(t_push_swap ps);
-void	rrr(t_push_swap ps);
+void	push(t_stack *from, t_stack *to);
+void	swap(t_stack *st);
+void	rotate(t_stack *st, t_rear rear);
+void	ss(t_push_swap *ps);
+void	rr(t_push_swap *ps);
+void	rrr(t_push_swap *ps);
+
+/**
+ * for Checker
+*/
+
 
 #endif

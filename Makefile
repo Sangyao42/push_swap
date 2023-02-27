@@ -22,8 +22,8 @@ SRCS = input_checker.c \
 		operation_utils.c
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 HEADER = -I ./include -I ./lib/GNL/src/ -I ./lib/Libft/
-LIBFT = "./lib/Libft/"
-LIBGNL = "./lib/GNL/"
+LIBFT = "./lib/Libft"
+LIBGNL = "./lib/GNL"
 
 all: $(NAME)
 

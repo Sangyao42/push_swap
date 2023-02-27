@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/24 15:55:26 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:49:41 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ static int	*ft_atoi_input(unsigned int counter, char **input)
 	unsigned int	i;
 	int				*elements;
 
-	elements = (int *)malloc(sizeof(int) * counter);
+	elements = (int *)ft_calloc(counter, sizeof(int));
 	if (!elements)
 		return (NULL);
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:20:24 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 14:43:59 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 16:45:38 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *str)
+size_t	gnl_strlen(const char *str)
 {
 	size_t	i;
 
@@ -72,7 +72,7 @@ size_t	gnl_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;
@@ -100,7 +100,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-char	*ft_strdup(char const *s1)
+char	*gnl_strdup(char const *s1)
 {
 	int		i;
 	char	*dup;

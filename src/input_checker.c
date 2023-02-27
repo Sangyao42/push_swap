@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:36:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/24 19:31:14 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 21:28:07 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ int	is_not_valid_int(const char *str)
 	long long	value;
 
 	sign = 1;
-	while (is_non_space(*str) == 1)
-		str = str + 1;
+	// while (is_non_space(*str) == 1)
+	// 	str = str + 1;
+	if (!*str)
+		return (1);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

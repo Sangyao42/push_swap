@@ -6,14 +6,14 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:03:38 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 14:44:36 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 16:47:20 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "stdio.h"
 
-size_t	ft_strlen(const char *str)
+size_t	gnl_strlen(const char *str)
 {
 	size_t	i;
 
@@ -31,9 +31,9 @@ size_t	ft_strlen(const char *str)
  * Before returning, free the previous offset_str.
  * @details At first, the static char *offset_str points to NULL
  * as default.
- * So if the new offset_str = ft_strdup(offset_str + len) == '\0',
+ * So if the new offset_str = gnl_strdup(offset_str + len) == '\0',
  * it must be set as NULL to prepare for the next call of
- * get_next_line() in ft_strdup().
+ * get_next_line() in gnl_strdup().
 */
 char	*gnl_strjoin(char *s1, char const *s2)
 {
@@ -42,9 +42,9 @@ char	*gnl_strjoin(char *s1, char const *s2)
 	size_t	s1_len;
 
 	if (!s1)
-		return (ft_strdup(s2));
-	s1_len = ft_strlen(s1);
-	str_join = (char *)malloc(s1_len + ft_strlen(s2) + 1);
+		return (gnl_strdup(s2));
+	s1_len = gnl_strlen(s1);
+	str_join = (char *)malloc(s1_len + gnl_strlen(s2) + 1);
 	if (!str_join)
 		return (free(s1), NULL);
 	i = 0;
@@ -78,7 +78,7 @@ size_t	gnl_strchr(const char *s, int c)
 	str = (char *)s;
 	if (!str)
 		return (0);
-	s_len = ft_strlen(str);
+	s_len = gnl_strlen(str);
 	if ((char) c == 0)
 		return (s_len + 1);
 	i = 1;
@@ -91,7 +91,7 @@ size_t	gnl_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;
@@ -99,7 +99,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = gnl_strlen(s);
 	if ((size_t)start >= s_len)
 		substr = (char *)malloc(1);
 	else if (len > s_len)
@@ -121,7 +121,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 /**
  * @details if (!*s1) statement is linked to
- * offset_str = ft_strdup(offset_str + len) in get_offset_str() function.
+ * offset_str = gnl_strdup(offset_str + len) in get_offset_str() function.
  * If (offset_str + len) points to end of string, which is '\0',
  * that happens when before '\0' there is a '\n'.
  * The new offset_str must be set as NULL, to prepare
@@ -129,14 +129,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
  * Once the next read returns 0, the offset_str will remain as NULL.
  * Thus, the gext_first_line will return NULL as well.
 */
-char	*ft_strdup(char const *s1)
+char	*gnl_strdup(char const *s1)
 {
 	int		i;
 	char	*dup;
 
 	if (!*s1)
 		return (NULL);
-	dup = (char *)malloc(ft_strlen(s1) + 1);
+	dup = (char *)malloc(gnl_strlen(s1) + 1);
 	if (!dup)
 		return (NULL);
 	i = 0;

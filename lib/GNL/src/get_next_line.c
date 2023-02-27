@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:22:07 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 14:45:23 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 16:46:15 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ static char	*get_first_line(char *offset_str)
 	len = gnl_strchr(offset_str, '\n');
 	if (len)
 	{
-		line = ft_substr(offset_str, 0, len);
+		line = gnl_substr(offset_str, 0, len);
 	}
 	else
-		line = ft_strdup(offset_str);
+		line = gnl_strdup(offset_str);
 	return (line);
 }
 
 /**
  * @brief Store the string behind the '\n'
- * @details If there is '\n' in offset_str, using ft_strdup() make a copy of
+ * @details If there is '\n' in offset_str, using gnl_strdup() make a copy of
  * the string starting from (offset_str + len) and free the previous offset_str
  * using a pointer (first set a ptr points to previous offset_str,
- * after ft_strdup(), free the ptr, which frees the previous offset_str).
+ * after gnl_strdup(), free the ptr, which frees the previous offset_str).
  * If there is no '\n' in offset_str, which means we reach the last line of
  * the file, thus offset_str should be freed and
  * make offset_str points to nowhere when finishing reading.
@@ -96,7 +96,7 @@ static char	*get_offset_str(char *offset_str)
 	if (len)
 	{
 		ptr = offset_str;
-		offset_str = ft_strdup(offset_str + len);
+		offset_str = gnl_strdup(offset_str + len);
 		free(ptr);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:33:11 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 14:43:24 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/27 16:46:37 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static char	*get_first_line(char *offset_str)
 		return (NULL);
 	len = gnl_strchr(offset_str, '\n');
 	if (len)
-		line = ft_substr(offset_str, 0, len);
+		line = gnl_substr(offset_str, 0, len);
 	else
-		line = ft_strdup(offset_str);
+		line = gnl_strdup(offset_str);
 	return (line);
 }
 
@@ -65,7 +65,7 @@ static char	*get_offset_str(char *offset_str)
 	if (len)
 	{
 		ptr = offset_str;
-		offset_str = ft_strdup(offset_str + len);
+		offset_str = gnl_strdup(offset_str + len);
 		free(ptr);
 	}
 	else
