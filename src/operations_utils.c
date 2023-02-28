@@ -6,18 +6,18 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:54:39 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/27 16:40:04 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/28 15:02:09 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	next_idx(t_stack st, int idx)
+int	next_idx(t_stack st, int idx)
 {
 	return ((idx + 1) % st.max_size);
 }
 
-static int	prev_idx( t_stack st, int idx)
+int	prev_idx( t_stack st, int idx)
 {
 	return ((st.max_size + (idx - 1)) % st.max_size);
 }

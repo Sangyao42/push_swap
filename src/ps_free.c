@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_utils.c                                      :+:      :+:    :+:   */
+/*   ps_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 17:33:29 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 15:28:28 by sawang           ###   ########.fr       */
+/*   Created: 2023/02/28 16:00:06 by sawang            #+#    #+#             */
+/*   Updated: 2023/02/28 16:01:54 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_strcmp(char *s1, char *s2)
+void	free_ps(t_push_swap *ps)
 {
-	int	i;
-	int	ret_val;
-
-	i = 0;
-	ret_val = 0;
-	while (s1[i] || s2[i])
-	{
-		ret_val = s1[i] - s2[i];
-		if (ret_val != 0)
-			return (ret_val);
-		else
-			ret_val = 0;
-		i++;
-	}
-	return (ret_val);
+	free(ps->a.elements);
+	ps->a.elements = NULL;
+	free(ps->b.elements);
+	ps->b.elements = NULL;
+	return ;
 }

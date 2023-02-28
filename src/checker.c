@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_utils.c                                      :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 17:33:29 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 15:28:28 by sawang           ###   ########.fr       */
+/*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
+/*   Updated: 2023/02/28 16:06:15 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_strcmp(char *s1, char *s2)
-{
-	int	i;
-	int	ret_val;
+void	print_stacks(t_push_swap ps); //for testing
 
-	i = 0;
-	ret_val = 0;
-	while (s1[i] || s2[i])
+int	main(int argc, char **argv)
+{
+	t_push_swap	ps;
+
+	init_ps(&ps, argc, argv);
+	print_stacks(ps);
+	if (command_checker(&ps))
 	{
-		ret_val = s1[i] - s2[i];
-		if (ret_val != 0)
-			return (ret_val);
-		else
-			ret_val = 0;
-		i++;
+		free_ps(&ps);
+		exit(EXIT_FAILURE);
 	}
-	return (ret_val);
+	else
+	{
+		if (is_sorted(ps.a) == 0 && stack_is_empty(ps.b) == 0)
+			ft_putstr_fd("OK\n", 1);
+		else
+			ft_putstr_fd("KO\n", 1);
+		print_stacks(ps);
+	}
+	free_ps(&ps);
+	exit(EXIT_SUCCESS);
 }

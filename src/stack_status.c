@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_utils.c                                      :+:      :+:    :+:   */
+/*   stack_status.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 17:33:29 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 15:28:28 by sawang           ###   ########.fr       */
+/*   Created: 2023/02/28 16:02:54 by sawang            #+#    #+#             */
+/*   Updated: 2023/02/28 16:03:20 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_strcmp(char *s1, char *s2)
+int	stack_is_empty(t_stack st)
 {
-	int	i;
-	int	ret_val;
+	if (st.size == 0)
+		return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
+}
 
-	i = 0;
-	ret_val = 0;
-	while (s1[i] || s2[i])
+int	is_sorted(t_stack st)
+{
+	unsigned int	i;
+	unsigned int	idx;
+	unsigned int	next;
+
+	i = 1;
+	idx = st.front;
+	while (i < st.max_size)
 	{
-		ret_val = s1[i] - s2[i];
-		if (ret_val != 0)
-			return (ret_val);
-		else
-			ret_val = 0;
+		next = next_idx(st, idx);
+		if (st.elements[idx] > st.elements[next])
+			return (EXIT_FAILURE);
+		idx = next;
 		i++;
 	}
-	return (ret_val);
+	return (EXIT_SUCCESS);
 }
