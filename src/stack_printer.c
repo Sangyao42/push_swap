@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:05:04 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 16:53:02 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/02 15:33:22 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	print_stacks(t_push_swap ps)
 	unsigned int	idx;
 
 	i = 0;
-
 	idx = ps.a.front;
 	printf("stack a: ");
 	while (i < ps.a.size)

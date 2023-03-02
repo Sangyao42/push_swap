@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:09:53 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 16:52:14 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:22:28 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	main(int argc, char **argv)
 			ft_putstr_fd("OK\n", 1);
 		else
 			ft_putstr_fd("KO\n", 1);
-		print_stacks(ps);
 	}
 	free_ps(&ps);
 	exit(EXIT_SUCCESS);
@@ -134,6 +133,7 @@ int	command_checker(t_push_swap *ps)
 			free(cmd);
 			return (EXIT_FAILURE);
 		}
+		print_stacks(ps);
 		free(cmd);
 		cmd = get_next_line(0);
 	}
@@ -169,28 +169,12 @@ int	command(t_push_swap *ps, char *cmd)
 	return (EXIT_SUCCESS);
 }
 
-
-
-
-
-
-
-
-
-
-
 void	print_stacks(t_push_swap ps)
 {
 	unsigned int	i;
-	unsigned int 	idx;
+	unsigned int	idx;
 
 	i = 0;
-	// while (i < ps.max_size)
-	// {
-	// 	printf("element %d in stack a is %d\t", i, ps.a.elements[i]);
-	// 	printf("element %d in stack b is %d\n", i, ps.b.elements[i]);
-	// 	i++;
-	// }
 	idx = ps.a.front;
 	printf("stack a: ");
 	while (i < ps.a.size)
@@ -229,3 +213,4 @@ void	print_stacks(t_push_swap ps)
 	}
 	printf("\n\n");
 }
+

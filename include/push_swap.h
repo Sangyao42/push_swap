@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/27 17:38:39 by sawang           ###   ########.fr       */
+/*   Updated: 2023/02/28 17:53:21 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef enum e_rear
 /**
  *Function for initialize the stack
 */
+void	init_ps(t_push_swap *ps, int argc, char **argv);
 void	init_stack(t_stack	*a);
 /**
  * Functions for checking and getting the input from command line
@@ -64,14 +65,15 @@ void	get_input_split(char **argv, t_stack *a);
 void	get_input_argv(int argc, char **argv, t_stack *a);
 //static int		*ft_atoi_input(int counter, char **input);
 // Input utils
-int		ps_is_non_digit(char c);
+// int		ps_is_non_digit(char c);
 int		ps_strcmp(char *s1, char *s2);
-int		ps_atoi(const char *str);
+// int		ps_atoi(const char *str);
 
 /**
  * Functions for operations
 */
 // atom operations
+int		next_idx(t_stack st, int idx);
 int		deque(t_stack *st, t_rear rear);
 void	enque(t_stack *st, t_rear rear, int num);
 // primary operations
@@ -83,8 +85,22 @@ void	rr(t_push_swap *ps);
 void	rrr(t_push_swap *ps);
 
 /**
+ * stack status
+*/
+int		stack_is_empty(t_stack st);
+int		is_sorted(t_stack st);
+void	free_ps(t_push_swap *ps);
+/**
  * for Checker
 */
+int		command_checker(t_push_swap *ps);
+int		command(t_push_swap *ps, char *cmd);
+
+/**
+ * printer for testing
+*/
+void	print_stacks(t_push_swap ps);
+
 
 
 #endif

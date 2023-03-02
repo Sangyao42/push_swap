@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 16:06:15 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/02 15:16:55 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char **argv)
 			ft_putstr_fd("OK\n", 1);
 		else
 			ft_putstr_fd("KO\n", 1);
-		print_stacks(ps);
 	}
 	free_ps(&ps);
 	exit(EXIT_SUCCESS);

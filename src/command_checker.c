@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:18 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 16:02:03 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/02 15:30:30 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	command_checker(t_push_swap *ps)
 			free(cmd);
 			return (EXIT_FAILURE);
 		}
+		print_stacks(*ps);
 		free(cmd);
 		cmd = get_next_line(0);
 	}
@@ -34,9 +35,9 @@ int	command_checker(t_push_swap *ps)
 int	command(t_push_swap *ps, char *cmd)
 {
 	if (ps_strcmp(cmd, "pa\n") == 0)
-		push(&(ps->a), &(ps->b));
-	else if (ps_strcmp(cmd, "pb\n") == 0)
 		push(&(ps->b), &(ps->a));
+	else if (ps_strcmp(cmd, "pb\n") == 0)
+		push(&(ps->a), &(ps->b));
 	else if (ps_strcmp(cmd, "sa\n") == 0)
 		swap(&(ps->a));
 	else if (ps_strcmp(cmd, "sb\n") == 0)
