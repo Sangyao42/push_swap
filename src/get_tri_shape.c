@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:19:51 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/06 15:18:59 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/07 22:40:34 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "unistd.h"
 #include "stdlib.h"
 
+void	printf_tri_size(int *tri_size, int tri_amount);
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -35,6 +36,27 @@ void	ps_strlcpy(char *dest, char *src, size_t srcsize)
 		dest[i] = src[i];
 		i++;
 	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*mem;
+	size_t	i;
+
+	if (size && count > SIZE_MAX / size)
+		return (NULL);
+	mem = malloc(count * size);
+	if (mem)
+	{
+		i = 0;
+		while (i < (count * size))
+		{
+			mem[i] = 0;
+			i++;
+		}
+		return (mem);
+	}
+	return (NULL);
 }
 
 // char	*str_rev(char *str)
@@ -84,7 +106,7 @@ char	*str_mirror(char *str)
 	return (str);
 }
 
-char	*get_tri(int tri_amount)
+char	*get_tri_shape(int tri_amount)
 {
 	char	*shape;
 	char	*str_prev;
@@ -99,7 +121,7 @@ char	*get_tri(int tri_amount)
 		ps_strlcpy(shape, "DDA", 3);
 	else if (tri_amount / 3 >= 3)
 	{
-		str_prev = get_tri(tri_amount / 3);
+		str_prev = get_tri_shape(tri_amount / 3);
 		ps_strlcpy(shape + (2 * tri_amount / 3), str_prev, tri_amount / 3);
 		ps_strlcpy(shape, str_mirror(str_prev), tri_amount / 3);
 		free(str_prev);
@@ -118,18 +140,145 @@ int	triangle_counter(int max_size)
 	return (tri_amount);
 }
 
+int	*get_tri_priority(int tri_amount)
+{
+	int	priority;
+	int	layer;
+	int	tri_index;
+	int	*tri_priority;
+
+	tri_priority = (int *)ft_calloc(tri_amount, sizeof(int));
+	if (!tri_priority)
+		return (NULL);
+	tri_index = 0;
+	while (tri_index < tri_amount)
+	{
+		layer = 1;
+		priority = 0;
+		while ((tri_index / layer) % 3 == 1)
+		{
+			priority += 1;
+			layer *= 3;
+		}
+		tri_priority[tri_index] = priority;
+		tri_index++;
+	}
+	return (tri_priority);
+}
+
+int	get_max_priority(int *tri_priority, int tri_amount)
+{
+	int	max;
+	int	i;
+
+	i = 0;
+	max = 0;
+	while (i < tri_amount)
+	{
+		if (tri_priority[i] > max)
+			max = tri_priority[i];
+		i++;
+	}
+	return (max);
+}
+
+int	*get_tri_size(int *tri_priority, int max_size, int tri_amount)
+{
+	int	*tri_size;
+	int	i;
+	int	max_priority;
+
+	tri_size = (int *)ft_calloc(tri_amount, sizeof(int));
+	if (!tri_size)
+		return (NULL);
+	i = 0;
+	while (i < tri_amount)
+	{
+		tri_size[i] = 2;
+		i++;
+	}
+	printf("mid_test: ");
+	printf_tri_size(tri_size, tri_amount);
+	max_size -= 2 * tri_amount;
+	max_priority = get_max_priority(tri_priority, tri_amount);
+	printf("mid max_priority is %d\tmax_size is %d\n", max_priority, max_size);
+	while (max_priority >= 0 && max_size > 0)
+	{
+		i = 0;
+		while (i < tri_amount)
+		{
+			if (tri_priority[i] == max_priority && tri_size[i] < 6 && max_size >= 4)
+			{
+				tri_size[i] += 4;
+				tri_priority[i] = 0;
+				max_size -= 4;
+			}
+			if (tri_priority[i] == max_priority && tri_size[i] < 6 && max_size < 4)
+			{
+				tri_size[i] += max_size;
+				max_size = 0;
+			}
+			// printf("tri_size in test: %d\n", tri_size[i]);
+			i++;
+		}
+		max_priority--;
+	}
+	return (tri_size);
+}
+
+void	printf_tri_priority(int	*tri_priority, int tri_amount)
+{
+	int	i;
+
+	i = 0;
+	printf("tri_priority is ");
+	while (i < tri_amount)
+	{
+		printf("%d", tri_priority[i]);
+		i++;
+	}
+	printf(" with size %d\n", tri_amount);
+}
+
+void	printf_tri_size(int *tri_size, int tri_amount)
+{
+	int	i;
+	int	total_elements;
+
+	i = 0;
+	total_elements = 0;
+	printf("tri_size is ");
+	while (i < tri_amount)
+	{
+		total_elements += tri_size[i];
+		printf("%d", tri_size[i]);
+		i++;
+	}
+	printf(" with total elements %d\n", total_elements);
+}
+
 int	main(void)
 {
 	int		assume_maxsize;
 	int		tri_amount;
 	char	*shape;
+	int		*tri_priority;
+	int		*tri_size;
 
-	assume_maxsize = 17;
+	assume_maxsize = 301;
 	tri_amount = triangle_counter(assume_maxsize);
-	printf ("tri_amount:%d\n", tri_amount);
-	shape = get_tri(tri_amount);
+	printf ("tri_amount:%d with total elements %d\n", tri_amount, assume_maxsize);
+	shape = get_tri_shape(tri_amount);
 	printf("shape is %s with size %zu\n", shape, ft_strlen(shape));
 	if (shape)
 		free(shape);
+	tri_priority = get_tri_priority(tri_amount);
+	printf_tri_priority(tri_priority, tri_amount);
+	tri_size = get_tri_size(tri_priority, assume_maxsize, tri_amount);
+	printf_tri_size(tri_size, tri_amount);
+	if (tri_priority)
+		free(tri_priority);
+	if (tri_size)
+		free(tri_size);
 	return (0);
 }
