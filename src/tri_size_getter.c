@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:19:16 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/08 20:10:38 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/08 22:54:53 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,21 @@ static void	fill_tri_rest(int *tri_size, int *max_size, int tri_amount)
 	}
 }
 
+static void	flip_tri_size(int *tri_size, int tri_amount)
+{
+	int	i;
+	int	temp;
+
+	i = 0;
+	while (i < tri_amount / 2)
+	{
+		temp = tri_size[i];
+		tri_size[i] = tri_size[tri_amount - 1 - i];
+		tri_size[tri_amount - 1 - i] = temp;
+		i++;
+	}
+}
+
 int	*get_tri_size(int *tri_priority, int max_size, int tri_amount)
 {
 	int	*tri_size;
@@ -96,5 +111,6 @@ int	*get_tri_size(int *tri_priority, int max_size, int tri_amount)
 	fill_tri_prior(tri_size, tri_priority, &max_size, tri_amount);
 	// printf("max_size in test: %d\n", max_size);
 	fill_tri_rest(tri_size, &max_size, tri_amount);
+	flip_tri_size(tri_size, tri_amount);
 	return (tri_size);
 }

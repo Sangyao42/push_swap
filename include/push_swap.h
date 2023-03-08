@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/08 19:29:22 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/08 22:33:18 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ typedef struct s_push_swap
 	// char			*shape;
 	// char			*tri_elem;
 }				t_push_swap;
+
+typedef struct s_tri
+{
+	unsigned int	max_size;
+	unsigned int	tri_amount;
+	int				*shape;
+	int				*tri_size;
+}				t_tri;
 
 typedef enum e_rear
 {
