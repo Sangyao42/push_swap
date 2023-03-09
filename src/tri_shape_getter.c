@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 19:19:51 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/08 22:54:47 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/09 15:40:53 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,6 @@ static char	*str_mirror(char *str)
 	return (str);
 }
 
-static void	flip_tri_shape(char *tri_shape, int tri_amount)
-{
-	int	i;
-	int	temp;
-
-	i = 0;
-	while (i < tri_amount / 2)
-	{
-		temp = tri_shape[i];
-		tri_shape[i] = tri_shape[tri_amount - 1 - i];
-		tri_shape[tri_amount - 1 - i] = temp;
-		i++;
-	}
-}
-
 char	*get_tri_shape(int tri_amount)
 {
 	char	*shape;
@@ -87,7 +72,7 @@ char	*get_tri_shape(int tri_amount)
 		free(str_prev);
 		ps_strlcpy(shape + (tri_amount / 3), shape, tri_amount / 3);
 	}
-	flip_tri_shape(shape, tri_amount);
+	// flip_tri_shape(shape, tri_amount);
 	return (shape);
 }
 

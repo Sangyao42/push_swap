@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/08 22:33:18 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/09 16:37:04 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_tri
 {
 	unsigned int	max_size;
 	unsigned int	tri_amount;
-	int				*shape;
+	char			*tri_shape;
 	int				*tri_size;
 }				t_tri;
 
@@ -121,6 +121,11 @@ int		*get_tri_priority(int tri_amount);
 int		get_max_priority(int *tri_priority, int tri_amount);
 //3.2 getting size according to triangle priority
 int		*get_tri_size(int *tri_priority, int max_size, int tri_amount);
+
+/**
+ * for merging the triangles
+*/
+void	tri_merger(char *tri_shape, int *tri_size, unsigned int *tri_amount);
 
 /**
  * printer for testing
