@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:27:41 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/09 16:45:04 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/09 16:52:40 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,11 @@ static void	flip_tri_size(int *tri_size, int tri_amount)
 	}
 }
 
-// static void	tri_getter(char **tri_shape, int **tri_size, int tri_amount, int *tri_priority, int max_size)
-// {
-// 	*tri_shape = get_tri_shape(tri_amount);
-// 	*tri_size = get_tri_size(tri_priority, max_size, tri_amount);
-// 	flip_tri_shape(*tri_shape, tri_amount);
-// 	flip_tri_size(*tri_size, tri_amount);
-// 	// printf("shape is %s with size %zu\n", tri_shape, ft_strlen(tri_shape));
-// }
-
 static void	tri_getter(t_tri *tri_info, int *tri_priority)
 {
 	tri_info->tri_shape = get_tri_shape(tri_info->tri_amount);
-	tri_info->tri_size = get_tri_size(tri_priority, tri_info->max_size, tri_info->tri_amount);
+	tri_info->tri_size = \
+		get_tri_size(tri_priority, tri_info->max_size, tri_info->tri_amount);
 	flip_tri_shape(tri_info->tri_shape, tri_info->tri_amount);
 	flip_tri_size(tri_info->tri_size, tri_info->tri_amount);
 }

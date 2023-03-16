@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/09 16:37:04 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/16 20:55:52 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ typedef enum e_rear
 	END = 1,
 }	t_rear;
 
+typedef enum e_cmd
+{
+	PA,
+	PB,
+	SA,
+	SB,
+	RA,
+	RB,
+	RRA,
+	RRB,
+	SS,
+	RR,
+	RRR,
+}			t_cmd;
+
+typedef struct s_command
+{
+	int			cmd;
+	t_command	*next;
+}			t_command;
 /**
  *Function for initialize the stack
 */

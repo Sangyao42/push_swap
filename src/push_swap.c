@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/23 13:16:24 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/16 15:57:18 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,22 @@ int	main(int argc, char **argv)
 	// 	input = argv;
 	// if (input_is_valid(argc - 1, input))
 	// 	return (1);
-	elements = get_input(argc, argv);
-	if (!elements)
-		exit(EXIT_FAILURE);
-	free(elements);
-	return (0);
+	// elements = get_input(argc, argv);
+	// if (!elements)
+	// 	exit(EXIT_FAILURE);
+	// free(elements);
+
+	t_push_swap ps;
+	init_ps(&ps, argc, argv);
+	if (ps.a.max_size < 6)
+	{
+		sort_small_nums(&ps);
+		free_ps(&ps);
+		return (EXIT_SUCCESS);
+	}
+	sort_large_nums(&ps);
+	free_ps(&ps);
+	//free triangle shape triangle size and triangle priority
+	//free command linked list
+	return (EXIT_SUCCESS);
 }
