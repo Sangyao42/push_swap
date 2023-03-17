@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:27:41 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/09 16:52:40 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/17 18:13:23 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(void)
 	t_tri	tri_info;
 
 	init_tri(&tri_info);
-	tri_info.max_size = 301;
+	tri_info.max_size = 17;
 	tri_info.tri_amount = triangle_counter(tri_info.max_size);
 	printf ("tri_amount:%d with total elements %d\n", tri_info.tri_amount, tri_info.max_size);
 	tri_priority = get_tri_priority(tri_info.tri_amount);
@@ -95,4 +95,9 @@ int	main(void)
 		tri_info.tri_size = NULL;
 	}
 	return (0);
+}
+
+void	get_triangle(t_tri tri_info)
+{
+
 }

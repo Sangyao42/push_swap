@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/16 15:46:56 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/17 20:51:17 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 		free(ps->a.elements);
 		exit(EXIT_FAILURE);
 	}
+	ps->cmd = NULL;
 }

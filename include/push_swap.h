@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/16 20:55:52 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/17 20:51:11 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include "libft.h"
 # include "get_next_line.h"
 
@@ -37,6 +38,7 @@ typedef struct s_push_swap
 	// unsigned int	tri_amount;
 	// char			*shape;
 	// char			*tri_elem;
+	t_command		*cmd;
 }				t_push_swap;
 
 typedef struct s_tri
@@ -46,6 +48,12 @@ typedef struct s_tri
 	char			*tri_shape;
 	int				*tri_size;
 }				t_tri;
+
+typedef enum e_single_tri_shape
+{
+	A,
+	D,
+}			t_single_tri_shape;
 
 typedef enum e_rear
 {
@@ -68,11 +76,11 @@ typedef enum e_cmd
 	RRR,
 }			t_cmd;
 
-typedef struct s_command
+typedef struct s_command_list
 {
-	int			cmd;
-	t_command	*next;
-}			t_command;
+	t_cmd					cmd_value;
+	struct s_command_list	*next;
+}				t_command_list;
 /**
  *Function for initialize the stack
 */

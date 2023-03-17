@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   large_nums_sorter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/17 15:45:33 by sawang           ###   ########.fr       */
+/*   Created: 2023/03/17 16:37:35 by sawang            #+#    #+#             */
+/*   Updated: 2023/03/17 18:13:14 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_large_nums(t_push_swap *ps)
 {
-	t_push_swap	ps;
-	// t_command	*cmd;
-
-	init_ps(&ps, argc, argv);
-	// init_cmd(&cmd);
-	if (ps.a.max_size < 6)
+	tri_info;
+	get_triangle();
+	form_trianle();
+	while (!is_sorted(a) && !stack_is_empty(b))
 	{
-		sort_small_nums(&ps);
-		//print_cmd(); //free_cmd linked list
-		free_ps(&ps);
-		return (EXIT_SUCCESS);
+		merge_stack(ps, tri_info);
 	}
-	sort_large_nums(&ps);
-	free_ps(&ps);
-	//free triangle shape triangle size and triangle priority
-	//free command linked list
-	return (EXIT_SUCCESS);
+}
+
+void	merge_stack(ps, tri_info)
+{
+	one_third_need_to_push(tri_info);
+	push(ps,tri_info);// while loop
+	merge_into_one_third(ps, tri_info);
 }
