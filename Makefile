@@ -25,6 +25,10 @@ SRCS = input_checker.c \
 		ps_initializer.c \
 		ps_free.c \
 		stack_status.c \
+		indexer.c \
+		small_nums_sorter.c \
+		small_nums_sorter_utils.c \
+		command.c \
 		stack_printer.c
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 BONUS_SRCS = command_checker.c
@@ -61,9 +65,7 @@ fclean: clean
 	rm -f $(BONUS_NAME)
 	rm -f test
 
-
-re:
-	fclean all
+re: fclean all
 
 libft:
 	@make -C ./lib/Libft/

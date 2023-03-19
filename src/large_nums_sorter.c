@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 16:37:35 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/17 18:13:14 by sawang           ###   ########.fr       */
+/*   Created: 2023/03/19 16:41:19 by sawang            #+#    #+#             */
+/*   Updated: 2023/03/19 18:54:05 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,93 @@
 
 void	sort_large_nums(t_push_swap *ps)
 {
-	tri_info;
-	get_triangle();
-	form_trianle();
-	while (!is_sorted(a) && !stack_is_empty(b))
-	{
-		merge_stack(ps, tri_info);
-	}
+	index_input(ps);
+	partition_input(ps, a to b);
+	push_back_to_a(ps);
 }
 
-void	merge_stack(ps, tri_info)
+push_back_b(ps)
 {
-	one_third_need_to_push(tri_info);
-	push(ps,tri_info);// while loop
-	merge_into_one_third(ps, tri_info);
+	get index of the best in b; 
+	index = least_cost(stack b);
+	n_rb_or_rrb = least_cost.rb_or_rrb;
+		get how many ra or rra needed from least_cost
+	n_ra_or_rra = least_cost.ra_or_rra;
+	if ()
+	execute_insertion(least_cost);
+	push(b, a);
 }
+
+
+execute_insertion(least_cost)
+{
+	if (least_cost. ra < least_cost.rra && least_cost.rb < least_cost.rrb)
+	{
+		while (ra > 0 && rb > 0)
+		{
+			rr(ps);
+			ra--;
+			rb--;
+		}
+		while(ra>0)
+		{
+			rotate(a);
+			ra--;
+		}
+		while(rb>0)
+		{
+			rotate(b);
+			rb--;
+		}
+	}
+	else if (least_cost. ra > least_cost.rra && least_cost.rb > least_cost.rrb)
+	{
+		while (rra > 0 && rrb > 0)
+		{
+			rrr(ps);
+			rra--;
+			rrb--;
+		}
+		while(rra>0)
+		{
+			rotate(a);
+			rra--;
+		}
+		while(rrb>0)
+		{
+			rotate(b);
+			rrb--;
+		}
+	}
+	else if (least_cost. rb < least_cost.rrb)
+	{
+		while(rb > 0)
+		{
+			rotate(b);
+			rb--;
+		}
+		if(ra < rra)
+		{
+			ra until ra == 0;
+		}
+		else
+			rra until rra == 0;
+	}
+	else if (rb > rrb)
+	{
+		rrb until rrb ==0;
+		if(ra < rra)
+		{
+			ra until ra == 0;
+		}
+		else
+			rra until rra == 0;
+	}
+
+
+
+
+}
+
+
+

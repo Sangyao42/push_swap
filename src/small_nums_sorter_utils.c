@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small_nums_utils.c                            :+:      :+:    :+:   */
+/*   small_nums_sorter_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:37:13 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/17 14:52:59 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/19 22:33:17 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 // #include <stdio.h>
 
-int	get_min_num(int *array, unsigned int size)
+unsigned int	get_min_num(unsigned int *array, unsigned int size)
 {
-	int				min;
+	unsigned int	min;
 	unsigned int	i;
 
 	i = 0;
@@ -28,9 +28,9 @@ int	get_min_num(int *array, unsigned int size)
 	return (min);
 }
 
-int	get_max_num(int *array, unsigned int size)
+unsigned int	get_max_num(unsigned int *array, unsigned int size)
 {
-	int				max;
+	unsigned int	max;
 	unsigned int	i;
 
 	i = 0;

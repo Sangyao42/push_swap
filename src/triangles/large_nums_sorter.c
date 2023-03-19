@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   large_nums_sorter.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:46:04 by sawang           ###   ########.fr       */
+/*   Created: 2023/03/17 16:37:35 by sawang            #+#    #+#             */
+/*   Updated: 2023/03/17 18:13:14 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stacks(t_push_swap ps); //for testing
-
-int	main(int argc, char **argv)
+void	sort_large_nums(t_push_swap *ps)
 {
-	t_push_swap	ps;
+	tri_info;
+	get_triangle();
+	form_trianle();
+	while (!is_sorted(a) && !stack_is_empty(b))
+	{
+		merge_stack(ps, tri_info);
+	}
+}
 
-	init_ps(&ps, argc, argv);
-	// print_stacks(ps);
-	if (command_checker(&ps))
-	{
-		free_ps(&ps);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		if (is_sorted(ps.a) == 0 && stack_is_empty(ps.b) == 0)
-			ft_putstr_fd("OK\n", 1);
-		else
-			ft_putstr_fd("KO\n", 1);
-	}
-	free_ps(&ps);
-	exit(EXIT_SUCCESS);
+void	merge_stack(ps, tri_info)
+{
+	one_third_need_to_push(tri_info);
+	push(ps,tri_info);// while loop
+	merge_into_one_third(ps, tri_info);
 }

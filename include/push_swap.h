@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/17 20:51:11 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/19 22:34:19 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@
 
 typedef struct s_stack
 {
-	int				*elements;
+	unsigned int	*elements;
 	unsigned int	front;
 	unsigned int	rear;
 	unsigned int	size;
 	unsigned int	max_size;
 }			t_stack;
+
+// typedef enum e_a_or_b
+// {
+// 	TO_A = -1,
+// 	TO_B = 1,
+// }			t_a_or_b;
 
 typedef struct s_push_swap
 {
@@ -38,22 +44,23 @@ typedef struct s_push_swap
 	// unsigned int	tri_amount;
 	// char			*shape;
 	// char			*tri_elem;
-	t_command		*cmd;
+	// t_command		*cmd;
+	// t_a_or_b	to_a_or_to_b;
 }				t_push_swap;
 
-typedef struct s_tri
-{
-	unsigned int	max_size;
-	unsigned int	tri_amount;
-	char			*tri_shape;
-	int				*tri_size;
-}				t_tri;
+// typedef struct s_tri
+// {
+// 	unsigned int	max_size;
+// 	unsigned int	tri_amount;
+// 	char			*tri_shape;
+// 	int				*tri_size;
+// }				t_tri;
 
-typedef enum e_single_tri_shape
-{
-	A,
-	D,
-}			t_single_tri_shape;
+// typedef enum e_single_tri_shape
+// {
+// 	A,
+// 	D,
+// }			t_single_tri_shape;
 
 typedef enum e_rear
 {
@@ -99,9 +106,12 @@ int		is_not_valid_int(const char *str);
 // int		*get_input(int argc, char **argv);
 // int		*get_input_split(char **argv);
 // int		*get_input_argv(int argc, char **argv);
-void	get_input(int argc, char **argv, t_stack *a);
-void	get_input_split(char **argv, t_stack *a);
-void	get_input_argv(int argc, char **argv, t_stack *a);
+// void	get_input(int argc, char **argv, t_stack *a);
+// void	get_input_split(char **argv, t_stack *a);
+// void	get_input_argv(int argc, char **argv, t_stack *a);
+void	get_input(int argc, char **argv, t_stack *a, int **input_array);
+void	get_input_split(char **argv, t_stack *a, int **input_array);
+void	get_input_argv(int argc, char **argv, t_stack *a, int **input_array);
 //static int		*ft_atoi_input(int counter, char **input);
 // Input utils
 // int		ps_is_non_digit(char c);
@@ -135,6 +145,32 @@ void	free_ps(t_push_swap *ps);
 int		command_checker(t_push_swap *ps);
 int		command(t_push_swap *ps, char *cmd);
 
+/**
+ * Functions for indexing the input
+*/
+void			index_input(t_stack *a, int *input_array);
+unsigned int	get_index(int to_compare, int *input_array, unsigned int input_array_size);
+
+/***
+ * Functions for sorting small numbers
+*/
+void	sort_small_nums(t_push_swap *ps);
+void	sort_2_nums(t_push_swap *ps);
+void	sort_3_nums(t_push_swap *ps);
+void	sort_4_nums(t_push_swap *ps);
+void	sort_5_nums(t_push_swap *ps);
+unsigned int	get_min_num(unsigned int *array, unsigned int size);
+unsigned int	get_max_num(unsigned int *array, unsigned int size);
+
+/**
+ * Functions for sorting large numbers
+*/
+
+/**
+ * Functions for running instructions and printing commands
+*/
+void	run_command(t_cmd cmd_value, t_push_swap *ps);
+void	print_command(t_cmd cmd_value);
 /**
  * for generating initial triangle
 */
