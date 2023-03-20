@@ -28,6 +28,8 @@ SRCS = input_checker.c \
 		indexer.c \
 		small_nums_sorter.c \
 		small_nums_sorter_utils.c \
+		large_nums_sorter.c \
+		partitioner.c \
 		command.c \
 		stack_printer.c
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))

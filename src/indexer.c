@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:39:08 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 21:52:02 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/20 13:13:42 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	index_input(t_stack *a, int *input_array)
 	if (!indexed_array)
 	{
 		free(input_array);
+		input_array = NULL;
 		return ;
 	}
 	size_idx = 0;
@@ -61,6 +62,7 @@ void	index_input(t_stack *a, int *input_array)
 		size_idx++;
 	}
 	free(input_array);
+	input_array = NULL;
 	a->elements = indexed_array;
 }
 

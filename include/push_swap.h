@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:34:19 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/20 22:39:46 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,22 @@ typedef enum e_cmd
 	RR,
 	RRR,
 }			t_cmd;
+
+// typedef struct s_pivot
+// {
+
+// }				t_pivot;
+
+typedef struct s_cmd_cost
+{
+	unsigned int	rb;
+	unsigned int	rrb;
+	unsigned int	ra;
+	unsigned int	rra;
+	unsigned int	rr;
+	unsigned int	rrr;
+	unsigned int	cmd_cost;
+}				t_cmd_cost;
 
 typedef struct s_command_list
 {
@@ -165,12 +181,19 @@ unsigned int	get_max_num(unsigned int *array, unsigned int size);
 /**
  * Functions for sorting large numbers
 */
+void	sort_large_nums(t_push_swap *ps);
+
+/**
+ * Functions for partitioning using 2 pivots
+*/
+void	partition_by_pivot(t_push_swap *ps);
 
 /**
  * Functions for running instructions and printing commands
 */
 void	run_command(t_cmd cmd_value, t_push_swap *ps);
 void	print_command(t_cmd cmd_value);
+void	run_best_commands(t_cmd_cost best_commands, t_push_swap *ps);
 /**
  * for generating initial triangle
 */

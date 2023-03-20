@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:49:58 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:29:13 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/20 22:46:03 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ void	print_command(t_cmd cmd_value)
 		ft_putstr_fd("rr\n", STDOUT_FILENO);
 	if (cmd_value == 10)
 		ft_putstr_fd("rrr\n", STDOUT_FILENO);
+}
+
+void	run_best_commands(t_cmd_cost best_commands, t_push_swap *ps)
+{
+	while (best_commands.rr--)
+		run_command(RR, ps);
+	while (best_commands.ra--)
+		run_command(RA, ps);
+	while (best_commands.rb--)
+		run_command(RB, ps);
+	while (best_commands.rrr--)
+		run_command(RRR, ps);
+	while (best_commands.rra--)
+		run_command(RRA, ps);
+	while (best_commands.rrb--)
+		run_command(RRB, ps);
 }

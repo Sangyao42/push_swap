@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:46:33 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/20 19:59:23 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	main(int argc, char **argv)
 	init_ps(&ps, argc, argv);
 	print_stacks(ps);
 	// init_cmd(&cmd);
-
+	if (is_sorted(ps.a) && stack_is_empty(ps.b))
+	{
+		free_ps(&ps);
+		return (EXIT_SUCCESS);
+	}
 	if (ps.a.max_size < 6)
 	{
 		sort_small_nums(&ps);
@@ -28,8 +32,7 @@ int	main(int argc, char **argv)
 		free_ps(&ps);
 		return (EXIT_SUCCESS);
 	}
-	// sort_large_nums(&ps);
-
+	sort_large_nums(&ps);
 	free_ps(&ps);
 	//free command linked list
 	system("leaks push_swap");

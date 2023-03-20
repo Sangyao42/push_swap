@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:11:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 14:49:22 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/20 17:09:32 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ void	form_single_tri_size_6(t_stack *from, t_stack *to)
 
 void	form_one_tri_size_6(from, to, ps.to_a_or_to_b, tri_shpae_A_or_D)
 {
+	if (to_a_or_to_b == 1)
+	{
+		from = ps.a;
+		to = ps.b;
+	}
+	if (to_a_or_to_b == -1)
+	{
+		from = ps.b;
+		to = ps.a;
+	}
 	int small_tri_info[3];
 	small_tri_info[0] == 2;
 	small_tri_info[1] == 2;
@@ -93,7 +103,7 @@ execute_instruction(instruction, to_a_or_to_b, from, to)
 	instruction code = -1;
 	if(instruction == S)
 	{
-		
+
 	}
 		swap(from);
 	if (a_to_b == 1)
