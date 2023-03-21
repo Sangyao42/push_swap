@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 19:52:15 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 17:24:01 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,37 @@ typedef struct s_stack
 	unsigned int	max_size;
 }			t_stack;
 
+// typedef enum e_a_or_b
+// {
+// 	TO_A = -1,
+// 	TO_B = 1,
+// }			t_a_or_b;
+
 typedef struct s_push_swap
 {
 	t_stack			a;
 	t_stack			b;
 	unsigned int	max_size;
+	// unsigned int	tri_amount;
+	// char			*shape;
+	// char			*tri_elem;
 	// t_command		*cmd;
+	// t_a_or_b	to_a_or_to_b;
 }				t_push_swap;
+
+// typedef struct s_tri
+// {
+// 	unsigned int	max_size;
+// 	unsigned int	tri_amount;
+// 	char			*tri_shape;
+// 	int				*tri_size;
+// }				t_tri;
+
+// typedef enum e_single_tri_shape
+// {
+// 	A,
+// 	D,
+// }			t_single_tri_shape;
 
 typedef enum e_rear
 {
@@ -75,12 +99,11 @@ typedef struct s_cmd_cost
 	unsigned int	cmd_cost;
 }				t_cmd_cost;
 
-// typedef struct s_command_list
-// {
-// 	t_cmd					cmd_value;
-// 	struct s_command_list	*next;
-// }				t_command_list;
-
+typedef struct s_command_list
+{
+	t_cmd					cmd_value;
+	struct s_command_list	*next;
+}				t_command_list;
 /**
  *Function for initialize the stack
 */
@@ -96,12 +119,20 @@ int		is_duplicate(char *str, char **input, int arg_num, int arg_idx);
 // int		is_not_in_range(char *str);
 int		is_not_valid_int(const char *str);
 // Getter
+// int		*get_input(int argc, char **argv);
+// int		*get_input_split(char **argv);
+// int		*get_input_argv(int argc, char **argv);
+// void	get_input(int argc, char **argv, t_stack *a);
+// void	get_input_split(char **argv, t_stack *a);
+// void	get_input_argv(int argc, char **argv, t_stack *a);
 void	get_input(int argc, char **argv, t_stack *a, int **input_array);
 void	get_input_split(char **argv, t_stack *a, int **input_array);
 void	get_input_argv(int argc, char **argv, t_stack *a, int **input_array);
 //static int		*ft_atoi_input(int counter, char **input);
 // Input utils
+// int		ps_is_non_digit(char c);
 int		ps_strcmp(char *s1, char *s2);
+// int		ps_atoi(const char *str);
 
 /**
  * Functions for operations
@@ -153,15 +184,14 @@ unsigned int	get_max_num(unsigned int *array, unsigned int size);
 */
 void	sort_large_nums(t_push_swap *ps);
 void	push_back_to_a(t_push_swap *ps);
-void	rotate_final(t_push_swap *ps);
 //1. Getting how many ra/rra or rb/rrb needed
 //for every element in b
 unsigned int	get_index_b(t_stack st, unsigned int element_idx);
 void	count_rb_or_rrb(t_cmd_cost *cost, t_push_swap *ps, \
 	unsigned int element_idx);
-unsigned int	get_index_ra(t_push_swap *ps, \
+unsigned int	count_index_ra(t_cmd_cost *cost, t_push_swap *ps, \
 	unsigned int element_idx);
-unsigned int	get_index_rra(t_push_swap *ps, \
+unsigned int	count_index_rra(t_cmd_cost *cost, t_push_swap *ps, \
 	unsigned int element_idx);
 void	count_ra_or_rra(t_cmd_cost *cost, t_push_swap *ps, \
 	unsigned int element_idx);
@@ -172,6 +202,7 @@ t_cmd_cost	get_best_commands(t_push_swap *ps);
 void	update_cmd_cost(t_cmd_cost *cost, t_push_swap *ps, \
 	unsigned int element_idx);
 void	get_cmd_cost(t_cmd_cost *cost);
+
 
 /**
  * Functions for partitioning using 2 pivots
@@ -184,6 +215,25 @@ void	partition_by_pivot(t_push_swap *ps);
 void	run_command(t_cmd cmd_value, t_push_swap *ps);
 void	print_command(t_cmd cmd_value);
 void	run_best_commands(t_cmd_cost best_commands, t_push_swap *ps);
+/**
+ * for generating initial triangle
+*/
+//1. for getting triangle amount
+int		triangle_counter(int max_size);
+//2. for getting triangle shape
+char	*get_tri_shape(int tri_amount);
+//3. for getting triangle size
+//3.1 first get triangle priority,
+//triangle should have larger size elements
+int		*get_tri_priority(int tri_amount);
+int		get_max_priority(int *tri_priority, int tri_amount);
+//3.2 getting size according to triangle priority
+int		*get_tri_size(int *tri_priority, int max_size, int tri_amount);
+
+/**
+ * for merging the triangles
+*/
+void	tri_merger(char *tri_shape, int *tri_size, unsigned int *tri_amount);
 
 /**
  * printer for testing

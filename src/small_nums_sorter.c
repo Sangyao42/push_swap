@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:52:25 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:34:36 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:23:10 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sort_3_nums(t_push_swap *ps)
 		run_command(SA, ps);
 		run_command(RA, ps);
 	}
-	else if (a < b && a > b && b > c)
+	else if (a < b && a > c && b > c)
 		run_command(RRA, ps);
 }
 
@@ -84,12 +84,12 @@ void	sort_5_nums(t_push_swap *ps)
 
 void	sort_small_nums(t_push_swap *ps)
 {
-	if (ps->a.max_size == 2)
+	if (ps->a.size == 2)
 		sort_2_nums(ps);
-	else if (ps->a.max_size == 3)
+	else if (ps->a.size == 3)
 		sort_3_nums(ps);
-	else if (ps->a.max_size == 4)
+	else if (ps->a.size == 4)
 		sort_4_nums(ps);
-	else if (ps->a.max_size == 5)
+	else if (ps->a.size == 5)
 		sort_5_nums(ps);
 }

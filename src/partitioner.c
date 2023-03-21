@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 22:46:51 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/20 19:57:43 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:30:40 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	partition_by_pivot(t_push_swap *ps)
 
 	pivot[0] = (ps->a.max_size - 1) / 2;
 	pivot[1] = (ps->a.max_size - 1) * 3 / 4;
+	printf("pivot smaller: %d\n", pivot[0]);
+	printf("pivot larger: %d\n", pivot[1]);
 	i = 0;
 	while (i < ps->a.max_size)
 	{
@@ -34,8 +36,8 @@ void	partition_by_pivot(t_push_swap *ps)
 		}
 		i++;
 	}
-	i = 0;
-	while (i < ps->a.size - 3)
+	// i = 0;
+	while (ps->a.size > 3)
 		run_command(PB, ps);
 	sort_small_nums(ps);
 	print_stacks(*ps);

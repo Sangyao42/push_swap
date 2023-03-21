@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:41:19 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/20 22:42:47 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:52:35 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_large_nums(t_push_swap *ps)
 {
 	partition_by_pivot(ps);
 	push_back_to_a(ps);
+	rotate_final(ps);
 }
 
 // push_back_b(ps)
@@ -32,61 +33,35 @@ void	sort_large_nums(t_push_swap *ps)
 
 void	push_back_to_a(t_push_swap *ps)
 {
-	unsigned int	push_back_counter;
 	t_cmd_cost		best_commands;
 
-	push_back_counter = 0;
-	while (push_back_counter < ps->b.size)
+	while (ps->b.size)
 	{
 		best_commands = get_best_commands(ps);
 		run_best_commands(best_commands, ps);
 		run_command(PA, ps);
-		push_back_counter++;
 	}
 }
 
-void	get_cmd_cost(t_cmd_cost *cost)
+void	rotate_final(t_push_swap *ps)
 {
-	while (cost->ra && cost->rb)
+	unsigned int	front_value;
+	unsigned int	rotate_cnt;
+
+	front_value = ps->a.elements[ps->a.front];
+	if (front_value <= ps->a.max_size / 2)
 	{
-		cost->rr++;
-		cost->ra--;
-		cost->rb--;
+		while (front_value--)
+		{
+			run_command(RRA, ps);
+			// front_value--;
+		}
 	}
-	while (cost->rra && cost->rrb)
+	else
 	{
-		cost->rrr++;
-		cost->rra--;
-		cost->rrb--;
+		rotate_cnt = ps->a.max_size - front_value;
+		while (rotate_cnt--)
+			run_command(RA, ps);
 	}
-	cost->cmd_cost = cost->ra + cost->rb + cost->rr + \
-		cost->rra + cost->rrb + cost->rrr;
 }
 
-void	update_cmd_cost(t_cmd_cost *cost, t_push_swap *ps, \
-	unsigned int element_idx)
-{
-	count_rb_or_rrb(cost, ps, element_idx);
-	count_ra_or_rra(cost, ps, element_idx);
-	get_cmd_cost(cost);
-}
-
-t_cmd_cost	get_best_commands(t_push_swap *ps)
-{
-	t_cmd_cost		best;
-	unsigned int	next;
-	t_cmd_cost		temp_cost;
-
-	init_cmd_cost(&best);
-	init_cmd_cost(&temp_cost);
-	update_cmd_cost(&best, ps, ps->b.front);
-	next = next_idx(ps->b, ps->b.front);
-	while (next != ps->b.front)
-	{
-		update_cmd_cost(&temp_cost, ps, next);
-		if (temp_cost.cmd_cost < best.cmd_cost)
-			best = temp_cost;
-		next = next_idx(ps->b, next);
-	}
-	return (best);
-}
