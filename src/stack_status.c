@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:02:54 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 16:03:20 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 22:28:19 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_sorted(t_stack st)
 
 	i = 1;
 	idx = st.front;
-	while (i < st.max_size)
+	while (i < st.size)
 	{
 		next = next_idx(st, idx);
 		if (st.elements[idx] > st.elements[next])

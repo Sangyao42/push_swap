@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:41:19 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 19:52:35 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 22:35:43 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_large_nums(t_push_swap *ps)
 {
 	partition_by_pivot(ps);
 	push_back_to_a(ps);
-	rotate_final(ps);
+	// rotate_final(ps);
 }
 
 // push_back_b(ps)
@@ -52,10 +52,7 @@ void	rotate_final(t_push_swap *ps)
 	if (front_value <= ps->a.max_size / 2)
 	{
 		while (front_value--)
-		{
 			run_command(RRA, ps);
-			// front_value--;
-		}
 	}
 	else
 	{
@@ -64,4 +61,3 @@ void	rotate_final(t_push_swap *ps)
 			run_command(RA, ps);
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:52:25 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 19:23:10 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 22:30:22 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ void	sort_4_nums(t_push_swap *ps)
 	min = get_min_num(ps->a.elements, ps->a.size);
 	while (ps->a.elements[ps->a.front] != min)
 		run_command(RA, ps);
-	run_command(PB, ps);
-	sort_3_nums(ps);
-	run_command(PA, ps);
+	if (is_sorted(ps->a) == EXIT_FAILURE)
+	{
+		run_command(PB, ps);
+		sort_3_nums(ps);
+		run_command(PA, ps);
+	}
 }
 
 void	sort_5_nums(t_push_swap *ps)

@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:18 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/02 15:30:30 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 21:35:30 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	command_checker(t_push_swap *ps)
 			free(cmd);
 			return (EXIT_FAILURE);
 		}
-		print_stacks(*ps);
+		// print_stacks(*ps);
 		free(cmd);
 		cmd = get_next_line(0);
 	}

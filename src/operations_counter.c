@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 18:37:22 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 17:34:41 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/21 22:46:49 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,12 @@ void	count_ra_or_rra(t_cmd_cost *cost, t_push_swap *ps, \
 {
 	unsigned int	index_a;
 
+	index_a = 0;
+	// if (is_sorted(ps->a) == EXIT_SUCCESS)
+	// 	index_a = ps->a.size;
 	if (ps->b.elements[element_idx] > ps->a.elements[ps->a.front])
 		index_a = get_index_ra(ps, element_idx);
-	else
-	//if (ps->b.elements[element_idx] > ps->a.elements[ps->a.front])
+	else if (ps->b.elements[element_idx] > ps->a.elements[ps->a.front])
 		index_a = get_index_rra(ps, element_idx);
 	if (index_a <= ps->a.size / 2)
 		cost->ra = index_a;
