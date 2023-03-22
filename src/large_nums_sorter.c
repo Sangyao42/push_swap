@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:41:19 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 22:35:43 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:18:53 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,8 @@ void	sort_large_nums(t_push_swap *ps)
 {
 	partition_by_pivot(ps);
 	push_back_to_a(ps);
-	// rotate_final(ps);
+	rotate_final(ps);
 }
-
-// push_back_b(ps)
-// {
-// 	get index of the best in b;
-// 	index = least_cost(stack b);
-// 	n_rb_or_rrb = least_cost.rb_or_rrb;
-// 		get how many ra or rra needed from least_cost
-// 	n_ra_or_rra = least_cost.ra_or_rra;
-// 	if ()
-// 	execute_insertion(least_cost);
-// 	push(b, a);
-// }
 
 void	push_back_to_a(t_push_swap *ps)
 {

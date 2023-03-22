@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 19:52:15 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 16:09:46 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,11 @@ int		ps_strcmp(char *s1, char *s2);
  * Functions for operations
 */
 // atom operations
-int		next_idx(t_stack st, int idx);
-int		prev_idx( t_stack st, int idx);
-int		deque(t_stack *st, t_rear rear);
-void	enque(t_stack *st, t_rear rear, int num);
+unsigned int	next_idx(t_stack st, unsigned int idx);
+unsigned int	prev_idx( t_stack st, unsigned int idx);
+unsigned int	deque(t_stack *st, t_rear rear);
+void			enque(t_stack *st, t_rear rear, unsigned int num);
+
 // primary operations
 void	push(t_stack *from, t_stack *to);
 void	swap(t_stack *st);
@@ -135,7 +136,8 @@ int		command(t_push_swap *ps, char *cmd);
  * Functions for indexing the input
 */
 void			index_input(t_stack *a, int *input_array);
-unsigned int	get_index(int to_compare, int *input_array, unsigned int input_array_size);
+unsigned int	get_index(int to_compare, int *input_array, \
+	unsigned int input_array_size);
 
 /***
  * Functions for sorting small numbers
@@ -158,6 +160,8 @@ void	rotate_final(t_push_swap *ps);
 //for every element in b
 unsigned int	get_index_b(t_stack st, unsigned int element_idx);
 void	count_rb_or_rrb(t_cmd_cost *cost, t_push_swap *ps, \
+	unsigned int element_idx);
+unsigned int	get_index_a_is_sorted(t_push_swap *ps, \
 	unsigned int element_idx);
 unsigned int	get_index_ra(t_push_swap *ps, \
 	unsigned int element_idx);

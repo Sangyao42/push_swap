@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:10:50 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:20:13 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	init_stack(&(ps->b));
 	get_input(argc, argv, &(ps->a), &input_array);
 	if (!input_array)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
-	}
 	index_input(&ps->a, input_array);
 	if (!ps->a.elements)
 	{

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_utils.c                                  :+:      :+:    :+:   */
+/*   operations_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:54:39 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 15:02:09 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 16:01:14 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	next_idx(t_stack st, int idx)
+unsigned int	next_idx(t_stack st, unsigned int idx)
 {
 	return ((idx + 1) % st.max_size);
 }
 
-int	prev_idx( t_stack st, int idx)
+unsigned int	prev_idx( t_stack st, unsigned int idx)
 {
 	return ((st.max_size + (idx - 1)) % st.max_size);
 }
 
-int	deque(t_stack *st, t_rear rear)
+unsigned int	deque(t_stack *st, t_rear rear)
 {
 	int	num;
 
@@ -45,7 +45,7 @@ int	deque(t_stack *st, t_rear rear)
 	return (num);
 }
 
-void	enque(t_stack *st, t_rear rear, int num)
+void	enque(t_stack *st, t_rear rear, unsigned int num)
 {
 	if (st->size == 0)
 		st->elements[st->front] = num;

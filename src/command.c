@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:49:58 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/20 22:46:03 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 17:20:01 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	run_command(t_cmd cmd_value, t_push_swap *ps)
 {
-	if (cmd_value == 0)
+	if (cmd_value == PA)
 		push(&(ps->b), &(ps->a));
-	if (cmd_value == 1)
+	if (cmd_value == PB)
 		push(&(ps->a), &(ps->b));
-	if (cmd_value == 2)
+	if (cmd_value == SA)
 		swap(&(ps->a));
-	if (cmd_value == 3)
+	if (cmd_value == SB)
 		swap(&(ps->b));
-	if (cmd_value == 4)
+	if (cmd_value == RA)
 		rotate(&(ps->a), FRONT);
-	if (cmd_value == 5)
+	if (cmd_value == RB)
 		rotate(&(ps->b), FRONT);
-	if (cmd_value == 6)
+	if (cmd_value == RRA)
 		rotate(&(ps->a), END);
-	if (cmd_value == 7)
+	if (cmd_value == RRB)
 		rotate(&(ps->b), END);
-	if (cmd_value == 8)
+	if (cmd_value == SS)
 		ss(ps);
-	if (cmd_value == 9)
+	if (cmd_value == RR)
 		rr(ps);
-	if (cmd_value == 10)
+	if (cmd_value == RRR)
 		rrr(ps);
 	print_command(cmd_value);
 }

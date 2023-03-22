@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:36:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/08 21:46:58 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 21:36:12 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	input_is_not_valid(int arg_num, char **input)
 		if (i < (arg_num - 1))
 		{
 			if (is_duplicate(*(input + i), &(*(input + i + 1)), arg_num, i))
-				return (1);
+				return (EXIT_FAILURE);
 		}
 		if (is_not_valid_int(*(input + i)))
-			return (ft_putstr_fd("is not valid int Error\n", 2), 1);
+			return (EXIT_FAILURE);
 		i++;
 	}
 	return (0);
@@ -41,7 +41,7 @@ int	is_duplicate(char *str, char **input, int arg_num, int arg_idx)
 	while (i < arg_num - 1 - arg_idx)
 	{
 		if (ps_strcmp(str, *(input + i)) == 0)
-			return (ft_putstr_fd("duplicate Error\n", 2), 1);
+			return (EXIT_FAILURE);
 		i++;
 	}
 	return (0);
@@ -53,8 +53,6 @@ int	is_not_valid_int(const char *str)
 	long long	value;
 
 	sign = 1;
-	// while (is_non_space(*str) == 1)
-	// 	str = str + 1;
 	if (!*str)
 		return (1);
 	if (*str == '-' || *str == '+')
@@ -63,13 +61,15 @@ int	is_not_valid_int(const char *str)
 			sign = -1;
 		str = str + 1;
 	}
+	if (*str > '9' || *str < '0')
+		return (EXIT_FAILURE);
 	value = 0;
 	while (*str && ('0' <= *str && *str <= '9'))
 	{
 		value = 10 * value;
 		value = value + (*str - '0');
 		if ((value * sign) > INT_MAX || (value * sign) < INT_MIN)
-			return (ft_putstr_fd("not in range Error\n", 2), 1);
+			return (EXIT_FAILURE);
 		str++;
 	}
 	return (*str != 0);

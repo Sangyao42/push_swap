@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:01:18 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 21:35:30 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 17:51:08 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	command_checker(t_push_swap *ps)
 	{
 		if (command(ps, cmd) == 1)
 		{
-			ft_putstr_fd("Operations Error\n", 2);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 			free(cmd);
 			return (EXIT_FAILURE);
 		}

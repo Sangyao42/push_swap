@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/19 22:46:04 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:13:40 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		if (is_sorted(ps.a) == 0 && stack_is_empty(ps.b) == 0)
-			ft_putstr_fd("OK\n", 1);
+		if (is_sorted(ps.a) == EXIT_SUCCESS && \
+			stack_is_empty(ps.b) == EXIT_SUCCESS)
+			ft_putstr_fd("OK\n", STDOUT_FILENO);
 		else
-			ft_putstr_fd("KO\n", 1);
+			ft_putstr_fd("KO\n", STDOUT_FILENO);
 	}
 	free_ps(&ps);
 	exit(EXIT_SUCCESS);

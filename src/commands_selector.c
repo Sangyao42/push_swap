@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:24:46 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/21 17:34:59 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:15:03 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,23 @@ t_cmd_cost	get_best_commands(t_push_swap *ps)
 	t_cmd_cost		best;
 	unsigned int	next;
 	t_cmd_cost		temp_cost;
-	unsigned int	terminator;
+	unsigned int	i;
 
 	init_cmd_cost(&best);
-	init_cmd_cost(&temp_cost);
 	update_cmd_cost(&best, ps, ps->b.front);
+	i = 1;
 	next = next_idx(ps->b, ps->b.front);
-	terminator = next_idx(ps->b, ps->b.rear);
-	while (next != terminator)
+	while (i < ps->b.size)
 	{
+		init_cmd_cost(&temp_cost);
 		update_cmd_cost(&temp_cost, ps, next);
 		if (temp_cost.cmd_cost < best.cmd_cost)
 			best = temp_cost;
 		next = next_idx(ps->b, next);
+		i++;
 	}
+	// printf("best_cost:\nra: %d\trb: %d\trr: %d\nrra: %d\trrb: %d\trrr: %d\n", \
+		// best.ra, best.rb, best.rr, best.rra, best.rrb, best.rrr);
 	return (best);
 }
 
@@ -50,11 +53,6 @@ void	update_cmd_cost(t_cmd_cost *cost, t_push_swap *ps, \
 {
 	count_rb_or_rrb(cost, ps, element_idx);
 	count_ra_or_rra(cost, ps, element_idx);
-	get_cmd_cost(cost);
-}
-
-void	get_cmd_cost(t_cmd_cost *cost)
-{
 	while (cost->ra && cost->rb)
 	{
 		cost->rr++;
@@ -69,4 +67,38 @@ void	get_cmd_cost(t_cmd_cost *cost)
 	}
 	cost->cmd_cost = cost->ra + cost->rb + cost->rr + \
 		cost->rra + cost->rrb + cost->rrr;
+}
+
+void	count_rb_or_rrb(t_cmd_cost *cost, t_push_swap *ps, \
+	unsigned int element_idx)
+{
+	unsigned int	index_b;
+
+	index_b = get_index_b(ps->b, element_idx);
+	if (index_b <= ps->b.size / 2)
+		cost->rb = index_b;
+	else
+		cost->rrb = ps->b.size - index_b;
+}
+
+void	count_ra_or_rra(t_cmd_cost *cost, t_push_swap *ps, \
+	unsigned int element_idx)
+{
+	unsigned int	index_a;
+
+	index_a = 0;
+	if (is_sorted(ps->a) == EXIT_SUCCESS)
+		index_a = get_index_a_is_sorted(ps, element_idx);
+	else
+	{
+		if (ps->b.elements[element_idx] > ps->a.elements[ps->a.front])
+			index_a = get_index_ra(ps, element_idx);
+		else
+		// if (ps->b.elements[element_idx] < ps->a.elements[ps->a.rear])
+			index_a = get_index_rra(ps, element_idx);
+	}
+	if (index_a <= ps->a.size / 2)
+		cost->ra = index_a;
+	else
+		cost->rra = ps->a.size - index_a;
 }
