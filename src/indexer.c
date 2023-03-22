@@ -6,38 +6,11 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 16:39:08 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/20 13:13:42 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:33:31 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	index_input(int t_push_swap *ps)
-// {
-// 	int				*input_cpy;
-// 	int				cpy_idx;
-// 	unsigned int	element_idx;
-// 	int 			size_idx;
-// 	int				index;
-
-// 	size_idx = 0;
-// 	element_idx = ps->a.front;
-// 	while (size_idx < ps->a.size)
-// 	{
-// 		// cpy_idx = 0;
-// 		// index = 0;
-// 		// while (cpy_idx < ps->a.size)
-// 		// {
-// 		// 	if (input_cpy[cpy_idx] < ps->a.elements[element_idx])
-// 		// 		index++;
-// 		// 	cpy_idx++;
-// 		// }
-// 		// ps->a.elements[element_idx] = index;
-// 		ps->a.elements[element_idx] = get_index(input_array, ps);
-// 		element_idx = next_idx(ps->a, element_idx);
-// 		size_idx++;
-// 	}
-// }
 
 void	index_input(t_stack *a, int *input_array)
 {

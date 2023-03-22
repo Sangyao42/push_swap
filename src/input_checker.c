@@ -6,13 +6,13 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:36:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/22 21:36:12 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:44:30 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	input_is_not_valid(int arg_num, char **input)
+int	input_is_valid(int arg_num, char **input)
 {
 	int		i;
 	char	**input_cpy;
@@ -23,14 +23,15 @@ int	input_is_not_valid(int arg_num, char **input)
 	{
 		if (i < (arg_num - 1))
 		{
-			if (is_duplicate(*(input + i), &(*(input + i + 1)), arg_num, i))
+			if (is_duplicate(*(input + i), &(*(input + i + 1)), arg_num, i) \
+				== EXIT_SUCCESS)
 				return (EXIT_FAILURE);
 		}
-		if (is_not_valid_int(*(input + i)))
+		if (is_valid_int(*(input + i)) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 		i++;
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 int	is_duplicate(char *str, char **input, int arg_num, int arg_idx)
@@ -41,20 +42,20 @@ int	is_duplicate(char *str, char **input, int arg_num, int arg_idx)
 	while (i < arg_num - 1 - arg_idx)
 	{
 		if (ps_strcmp(str, *(input + i)) == 0)
-			return (EXIT_FAILURE);
+			return (EXIT_SUCCESS);
 		i++;
 	}
-	return (0);
+	return (EXIT_FAILURE);
 }
 
-int	is_not_valid_int(const char *str)
+int	is_valid_int(const char *str)
 {
 	int			sign;
 	long long	value;
 
 	sign = 1;
 	if (!*str)
-		return (1);
+		return (EXIT_FAILURE);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')

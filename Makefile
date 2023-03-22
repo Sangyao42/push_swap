@@ -1,5 +1,5 @@
 NAME = push_swap
-TEST = test.c
+# TEST = test.c
 BONUS_NAME = checker
 BONUS = checker.c
 PS = push_swap.c
@@ -9,12 +9,6 @@ CFLAGS =  -Wall -Werror -Wextra
 TEST_DIR = ./spec/
 SRC_DIR = src/
 OBJ_DIR = obj/
-# SRCS = $(addprefix $(SRC_DIR),input_checker.c)\
-# 		$(addprefix $(SRC_DIR),input_getter.c)\
-# 		$(addprefix $(SRC_DIR),input_utils.c)\
-# 		$(addprefix $(SRC_DIR),prime_operations.c)\
-# 		$(addprefix $(SRC_DIR),secondary_operations.c)\
-# 		$(addprefix $(SRC_DIR),operation_utils.c)\
 
 SRCS = input_checker.c \
 		input_getter.c \
@@ -30,10 +24,11 @@ SRCS = input_checker.c \
 		small_nums_sorter_utils.c \
 		partitioner.c \
 		large_nums_sorter.c \
-		operations_counter.c \
+		element_indexer.c \
 		commands_selector.c \
-		command.c \
-		stack_printer.c
+		command.c
+SRC_PRINTER = $(addprefix $(TEST_DIR), stack_printer.c)
+OBJ_PRINTER = $(addprefix $(OBJ_DIR), stack_printer.o)
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 BONUS_SRCS = command_checker.c
 BONUS_OBJS = $(addprefix $(OBJ_DIR), $(BONUS_SRCS:.c=.o))
@@ -44,19 +39,19 @@ LIBGNL = "./lib/GNL"
 all: $(NAME)
 
 $(NAME): $(OBJS) $(addprefix $(SRC_DIR),$(PS)) libft libgnl
-	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) $(OBJ_PRINTER) -o $(NAME)
 
 # test: $(OBJS) $(addprefix $(TEST_DIR),$(TEST)) libft libgnl
 # 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(TEST_DIR),$(TEST)) $(OBJS) -o test
 
 bonus: $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) libft libgnl
-	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) -o $(BONUS_NAME)
+	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) $(OBJ_PRINTER) -o $(BONUS_NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) $(HEADER) -c $^ -o $@
 
-# $(OBJS): $(SRCS)
-# 	$(CC) $(CFLAGS) $(HEADER) -L$(LIBFT) -lft -L$(LIBGNL) -lgnl -c $(SRCS)
+$(OBJ_PRINTER): $(SRCS_PRINTER)
+	@$(CC) $(CFLAGS) $(HEADER) -c $^ -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -67,7 +62,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(BONUS_NAME)
-	rm -f test
+# rm -f test
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/22 22:15:42 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:44:42 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	get_input_split(char **argv, t_stack *a, int **input_array)
 	}
 	while (*(input + a->max_size))
 		a->max_size++;
-	if (input_is_not_valid(a->max_size, input))
+	if (input_is_valid(a->max_size, input) == EXIT_FAILURE)
 	{
 		stringsfree(input);
 		ft_putstr_fd("Error\n", STDERR_FILENO);
@@ -56,7 +56,7 @@ void	get_input_argv(int argc, char **argv, t_stack *a, int **input_array)
 
 	input = argv + 1;
 	a->max_size = argc - 1;
-	if (input_is_not_valid(a->max_size, input))
+	if (input_is_valid(a->max_size, input) == EXIT_FAILURE)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		return ;
