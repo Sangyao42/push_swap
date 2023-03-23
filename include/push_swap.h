@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/22 22:51:25 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/23 16:26:09 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int				is_duplicate(char *str, char **input, int arg_num, int arg_idx);
 int				is_valid_int(const char *str);
 // Getter
 void			get_input(int argc, char **argv, t_stack *a, int **input_array);
-void			get_input_split(char **argv, t_stack *a, int **input_array);
-void			get_input_argv(int argc, char **argv, \
-	t_stack *a, int **input_array);
+// unsigned int	get_input_split(char **argv, t_stack *a, int **input_array);
+// void			get_input_argv(int argc, char **argv, \
+	// t_stack *a, int **input_array);
 //static int		*ft_atoi_input(int counter, char **input);
 // Input utils
 int				ps_strcmp(char *s1, char *s2);
