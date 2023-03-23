@@ -27,6 +27,7 @@ SRCS = input_checker.c \
 		commands_selector.c \
 		command.c
 SRCS += input_getter.c
+# SRCS += input_getter_2.c
 SRC_PRINTER = $(addprefix $(TEST_DIR), stack_printer.c)
 OBJ_PRINTER = $(addprefix $(OBJ_DIR), stack_printer.o)
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))

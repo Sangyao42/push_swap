@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/24 00:05:17 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:08:32 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	get_input(argc, argv, &(ps->a), &input_array);
 	if (!input_array)
 	{
-		system("leaks push_swap");
+		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
 	}
 	ps->a.size = ps->a.max_size;
@@ -40,7 +40,7 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	if (!ps->a.elements)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
-		system("leaks push_swap");
+		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
 	}
 	ps->b.max_size = ps->a.max_size;
@@ -48,7 +48,7 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	if (!ps->b.elements)
 	{
 		free(ps->a.elements);
-		system("leaks push_swap");
+		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
 	}
 }
