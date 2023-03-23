@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:24:46 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/22 22:15:03 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:16:54 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_cmd_cost	get_best_commands(t_push_swap *ps)
 		next = next_idx(ps->b, next);
 		i++;
 	}
-	// printf("best_cost:\nra: %d\trb: %d\trr: %d\nrra: %d\trrb: %d\trrr: %d\n", \
-		// best.ra, best.rb, best.rr, best.rra, best.rrb, best.rrr);
 	return (best);
 }
 

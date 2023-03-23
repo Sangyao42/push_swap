@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/23 17:53:33 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:16:33 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,3 @@ static void	get_input_argv(int argc, char **argv, t_stack *a, int **input_array)
 	a->size = a->max_size;
 	a->rear = a->max_size - 1;
 }
-

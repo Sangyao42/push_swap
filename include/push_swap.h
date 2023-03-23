@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:38:26 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/23 23:18:42 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 00:15:49 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_push_swap
 {
 	t_stack			a;
 	t_stack			b;
-	// unsigned int	max_size;
 }				t_push_swap;
 
 typedef enum e_rear
@@ -83,9 +82,6 @@ int				is_duplicate(char *str, char **input, int arg_num, int arg_idx);
 int				is_valid_int(const char *str);
 // Getter
 void			get_input(int argc, char **argv, t_stack *a, int **input_array);
-// unsigned int	get_input_split(char **argv, t_stack *a, int **input_array);
-// void			get_input_argv(int argc, char **argv, \
-	// t_stack *a, int **input_array);
 int				*ft_atoi_input(unsigned int counter, char **input);
 // Input utils
 int				ps_strcmp(char *s1, char *s2);
