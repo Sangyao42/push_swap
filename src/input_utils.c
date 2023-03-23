@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:33:29 by sawang            #+#    #+#             */
-/*   Updated: 2023/02/28 15:28:28 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/23 21:28:05 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,21 @@ int	ps_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (ret_val);
+}
+
+int	*ft_atoi_input(unsigned int counter, char **input)
+{
+	unsigned int	i;
+	int				*elements;
+
+	elements = (int *)ft_calloc(counter, sizeof(int));
+	if (!elements)
+		return (NULL);
+	i = 0;
+	while (i < counter)
+	{
+		elements[i] = ft_atoi(input[i]);
+		i++;
+	}
+	return (elements);
 }

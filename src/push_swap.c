@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 23:42:48 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/22 22:20:24 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/23 23:51:06 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	{
 		// print_stacks(ps);
 		free_ps(&ps);
+		system("leaks push_swap");
 		return (EXIT_SUCCESS);
 	}
 	if (ps.a.max_size < 6)
@@ -31,11 +32,12 @@ int	main(int argc, char **argv)
 		sort_small_nums(&ps);
 		// print_stacks(ps);
 		free_ps(&ps);
+		system("leaks push_swap");
 		return (EXIT_SUCCESS);
 	}
 	sort_large_nums(&ps);
 	// print_stacks(ps);
 	free_ps(&ps);
-	// system("leaks push_swap");
+	system("leaks push_swap");
 	return (EXIT_SUCCESS);
 }

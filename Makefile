@@ -11,7 +11,6 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRCS = input_checker.c \
-		input_getter.c \
 		input_utils.c \
 		prime_operations.c \
 		secondary_operations.c \
@@ -27,6 +26,7 @@ SRCS = input_checker.c \
 		element_indexer.c \
 		commands_selector.c \
 		command.c
+SRCS += input_getter.c
 SRC_PRINTER = $(addprefix $(TEST_DIR), stack_printer.c)
 OBJ_PRINTER = $(addprefix $(OBJ_DIR), stack_printer.o)
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))

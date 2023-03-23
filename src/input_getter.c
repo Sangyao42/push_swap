@@ -6,13 +6,12 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 20:44:34 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/23 16:25:26 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/23 17:53:33 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int			*ft_atoi_input(unsigned int counter, char **input);
 static unsigned int	get_input_split(char **argv, t_stack *a, int **input_array);
 static void			get_input_argv(int argc, char **argv, \
 	t_stack *a, int **input_array);
@@ -68,19 +67,3 @@ static void	get_input_argv(int argc, char **argv, t_stack *a, int **input_array)
 	a->rear = a->max_size - 1;
 }
 
-static int	*ft_atoi_input(unsigned int counter, char **input)
-{
-	unsigned int	i;
-	int				*elements;
-
-	elements = (int *)ft_calloc(counter, sizeof(int));
-	if (!elements)
-		return (NULL);
-	i = 0;
-	while (i < counter)
-	{
-		elements[i] = ft_atoi(input[i]);
-		i++;
-	}
-	return (elements);
-}
