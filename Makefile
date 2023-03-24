@@ -38,15 +38,17 @@ LIBFT = "./lib/Libft"
 LIBGNL = "./lib/GNL"
 
 all: $(NAME)
-	mkdir obj/
 
-$(NAME): $(OBJS) $(addprefix $(SRC_DIR),$(PS)) libft libgnl
+$(OBJ_DIR):
+	mkdir -p ./obj
+
+$(NAME): $(OBJ_DIR) $(OBJS) $(addprefix $(SRC_DIR),$(PS)) libft libgnl
 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) -o $(NAME)
 
 # test: $(OBJS) $(addprefix $(TEST_DIR),$(TEST)) libft libgnl
 # 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(TEST_DIR),$(TEST)) $(OBJS) -o test
 
-bonus: $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) libft libgnl
+bonus: $(OBJ_DIR) $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) libft libgnl
 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -64,6 +66,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(BONUS_NAME)
+	rm -rf ./obj
 # rm -f test
 
 re: fclean all

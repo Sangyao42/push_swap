@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/24 00:14:30 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 15:17:43 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (command_checker(&ps))
 	{
 		free_ps(&ps);
-		system("leaks checker");
+		// system("leaks checker");
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
 			ft_putstr_fd("KO\n", STDOUT_FILENO);
 	}
 	free_ps(&ps);
-	system("leaks checker");
+	// system("leaks checker");
 	exit(EXIT_SUCCESS);
 }
