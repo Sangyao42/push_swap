@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:03:32 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/24 00:14:30 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 14:52:01 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 	t_push_swap	ps;
 
 	init_ps(&ps, argc, argv);
-	// print_stacks(ps);
 	if (command_checker(&ps))
 	{
 		free_ps(&ps);

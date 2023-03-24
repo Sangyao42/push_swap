@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 17:24:46 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/24 00:16:54 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 14:52:15 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	count_ra_or_rra(t_cmd_cost *cost, t_push_swap *ps, \
 		if (ps->b.elements[element_idx] > ps->a.elements[ps->a.front])
 			index_a = get_index_ra(ps, element_idx);
 		else
-		// if (ps->b.elements[element_idx] < ps->a.elements[ps->a.rear])
 			index_a = get_index_rra(ps, element_idx);
 	}
 	if (index_a <= ps->a.size / 2)

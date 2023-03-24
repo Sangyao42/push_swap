@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:36:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/23 16:19:42 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 14:52:51 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,33 +75,3 @@ int	is_valid_int(const char *str)
 	}
 	return (*str != 0);
 }
-
-// int	is_valid_int(const char *str)
-// {
-// 	int			sign;
-// 	long long	value;
-
-// 	sign = 1;
-// 	while (*str == ' ')
-// 		str = str + 1;
-// 	if (!*str)
-// 		return (EXIT_FAILURE);
-// 	if (*str == '-' || *str == '+')
-// 	{
-// 		if (*str == '-')
-// 			sign = -1;
-// 		str = str + 1;
-// 	}
-// 	if (*str > '9' || *str < '0')
-// 		return (EXIT_FAILURE);
-// 	value = 0;
-// 	while (*str && ('0' <= *str && *str <= '9'))
-// 	{
-// 		value = 10 * value;
-// 		value = value + (*str - '0');
-// 		if ((value * sign) > INT_MAX || (value * sign) < INT_MIN)
-// 			return (EXIT_FAILURE);
-// 		str++;
-// 	}
-// 	return (*str != 0);
-// }

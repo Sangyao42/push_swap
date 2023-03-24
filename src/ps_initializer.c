@@ -6,7 +6,7 @@
 /*   By: sawang <sawang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:33:02 by sawang            #+#    #+#             */
-/*   Updated: 2023/03/24 00:08:32 by sawang           ###   ########.fr       */
+/*   Updated: 2023/03/24 14:53:33 by sawang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,13 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	init_stack(&(ps->b));
 	get_input(argc, argv, &(ps->a), &input_array);
 	if (!input_array)
-	{
-		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
-	}
 	ps->a.size = ps->a.max_size;
 	ps->a.rear = ps->a.max_size - 1;
 	index_input(&ps->a, input_array);
 	if (!ps->a.elements)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
-		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
 	}
 	ps->b.max_size = ps->a.max_size;
@@ -48,7 +44,6 @@ void	init_ps(t_push_swap *ps, int argc, char **argv)
 	if (!ps->b.elements)
 	{
 		free(ps->a.elements);
-		// system("leaks push_swap");
 		exit(EXIT_FAILURE);
 	}
 }
