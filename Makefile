@@ -28,8 +28,8 @@ SRCS = input_checker.c \
 		command.c
 SRCS += input_getter.c
 # SRCS += input_getter_2.c
-SRC_PRINTER = $(addprefix $(TEST_DIR), stack_printer.c)
-OBJ_PRINTER = $(addprefix $(OBJ_DIR), stack_printer.o)
+# SRC_PRINTER = $(addprefix $(TEST_DIR), stack_printer.c)
+# OBJ_PRINTER = $(addprefix $(OBJ_DIR), stack_printer.o)
 OBJS = $(addprefix $(OBJ_DIR),$(SRCS:.c=.o))
 BONUS_SRCS = command_checker.c
 BONUS_OBJS = $(addprefix $(OBJ_DIR), $(BONUS_SRCS:.c=.o))
@@ -40,19 +40,19 @@ LIBGNL = "./lib/GNL"
 all: $(NAME)
 
 $(NAME): $(OBJS) $(addprefix $(SRC_DIR),$(PS)) libft libgnl
-	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) $(OBJ_PRINTER) -o $(NAME)
+	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) -o $(NAME)
 
 # test: $(OBJS) $(addprefix $(TEST_DIR),$(TEST)) libft libgnl
 # 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(TEST_DIR),$(TEST)) $(OBJS) -o test
 
 bonus: $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) libft libgnl
-	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) $(OBJ_PRINTER) -o $(BONUS_NAME)
+	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(BONUS)) $(OBJS) $(BONUS_OBJS) -o $(BONUS_NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) $(HEADER) -c $^ -o $@
 
-$(OBJ_PRINTER): $(SRCS_PRINTER)
-	@$(CC) $(CFLAGS) $(HEADER) -c $^ -o $@
+# $(OBJ_PRINTER): $(SRCS_PRINTER)
+# 	@$(CC) $(CFLAGS) $(HEADER) -c $^ -o $@
 
 clean:
 	rm -f $(OBJS)
