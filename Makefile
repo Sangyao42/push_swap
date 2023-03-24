@@ -38,6 +38,7 @@ LIBFT = "./lib/Libft"
 LIBGNL = "./lib/GNL"
 
 all: $(NAME)
+	mkdir obj/
 
 $(NAME): $(OBJS) $(addprefix $(SRC_DIR),$(PS)) libft libgnl
 	$(CC) $(CFLAGS) $(HEADER) -L $(LIBFT) -lft -L $(LIBGNL) -lgnl $(addprefix $(SRC_DIR),$(PS)) $(OBJS) -o $(NAME)
